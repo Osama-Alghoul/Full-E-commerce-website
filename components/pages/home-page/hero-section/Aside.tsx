@@ -1,6 +1,6 @@
 export default function PageAsideAside() {
   return (
-    <ul className="list-none">
+    <ul className="list-none border-r py-8">
       <li>Woman's Fashion</li>
       <li>Men's Fashion</li>
       <li>Electronics</li>

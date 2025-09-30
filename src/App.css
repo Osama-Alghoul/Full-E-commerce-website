@@ -128,6 +128,11 @@
   font-style: italic;
 }
 
+:root {
+  --primary-color: #2563EB;
+  --secondary-color: #1E40AF;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   box-sizing: content-box;

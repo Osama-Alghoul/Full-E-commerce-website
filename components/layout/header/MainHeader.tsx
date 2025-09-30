@@ -8,7 +8,7 @@ interface HeaderProps {
 export default function Header({ type = "guest" }: HeaderProps) {
   const active = "underline";
   return (
-    <header className="flex justify-between pt-10 pb-4">
+    <header className="flex justify-between pt-10 pb-4 border-b px-32">
       <div className="text-2xl font-bold text-light">Exclusive</div>
       <nav className="flex gap-12 list-none">
         <li> 

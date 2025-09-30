@@ -1,10 +1,12 @@
 import Layout from "./Layout";
-import PageAside from "./pages/home-page/hero-section/Aside";
+import Hero from "./pages/home-page/hero-section/Hero";
+import Sales from "./pages/home-page/sales/Sales";
 
 export default function HomePage() {
   return (
     <Layout>
-      <PageAside />
+      <Hero />
+      <Sales />
     </Layout>
   );
 }
