@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <HomePage />
-      <div className='text-light-primary bg-yellow-600 text-9xl'>HELLOOO</div>
+      <div className='bg-light-primary'>HELLOO</div>
     </>
   )
 }
