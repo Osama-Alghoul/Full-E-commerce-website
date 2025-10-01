@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <HomePage />
-      <div className='bg-light-primary'>HELLOO</div>
     </>
   )
 }

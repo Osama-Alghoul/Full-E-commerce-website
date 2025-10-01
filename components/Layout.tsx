@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
       </AdsHeader>
       <Header />
-      <div className="px-32">
+      <div className="max-w-[1170px] m-auto">
         {children}
       </div>
     </>
