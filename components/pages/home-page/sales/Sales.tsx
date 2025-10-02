@@ -6,8 +6,8 @@ import { Products } from "../../../../mock-data/salesProducts";
 
 export default function Sales() {
   return (
-    <div className="flex flex-col">
-      <div className="rounded-lg mt-12 flex gap-20 items-end">
+    <section className="flex flex-col px-5 md:px-0">
+      <div className="rounded-lg mt-12 flex gap-20 items-end flex-wrap">
         <SectionTitle title="Today's" bigTitle="Flash Sales" />
         <Timer targetDate="2025-12-25T00:00:00" theme="dark" />
       </div>
@@ -17,6 +17,6 @@ export default function Sales() {
         })}
       </div>
       <Button className="my-[60px] self-center">View All Products</Button>
-    </div>
+    </section>
   );
 }

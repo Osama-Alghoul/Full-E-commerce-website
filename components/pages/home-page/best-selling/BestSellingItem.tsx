@@ -3,9 +3,9 @@ import Timer from "../../../ui/Timer";
 
 export default function BestSellingItem() {
   return (
-    <div className="bg-black w-full flex gap-7">
+    <div className="bg-black w-full flex gap-7 flex-wrap">
       <div>
-        <div className="flex flex-col items-start gap-8 pl-14 py-[69px]">
+        <div className="flex flex-col items-start gap-8 p-5 md:pl-14 md:py-[69px]">
           <div className="text-button1 font-semibold">Categories</div>
           <div className="text-white font-semibold text-5xl">
             Enhance Your Music Experience
@@ -14,7 +14,7 @@ export default function BestSellingItem() {
           <Button variant="green">Buy now</Button>
         </div>
       </div>
-      <div className="bg-[url('/ellipse.svg')] bg-contain bg-center pr-11 py-10">
+      <div className="bg-[url('/ellipse.svg')] bg-contain bg-center md:pr-11 md:py-10 flex items-center justify-center">
         <img src="/music-box.png" />
       </div>
     </div>

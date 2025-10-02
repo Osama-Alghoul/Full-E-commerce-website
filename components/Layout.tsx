@@ -1,6 +1,7 @@
 import React from "react";
 import AdsHeader from "./layout/header/AdsHeader";
 import Header from "./layout/header/MainHeader";
+import Footer from "./layout/footer/Footer"
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="max-w-[1170px] m-auto">
         {children}
       </div>
+      <Footer />
     </>
   );
 }

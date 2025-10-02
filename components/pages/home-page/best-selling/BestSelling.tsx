@@ -6,17 +6,17 @@ import BestSale from "./BestSellingItem";
 
 export default function BestSelling() {
   return (
-    <div className="pt-16">
-      <div className="flex justify-between pb-[60px]">
+    <section className="pt-16">
+      <div className="flex justify-between pb-[60px] flex-wrap px-3.5 md:px-0">
         <SectionTitle title="This Month" bigTitle="Best Selling Products" />
         <Button className="self-end">View All</Button>
       </div>
-      <div className="flex justify-between mb-36">
+      <div className="flex flex-wrap gap-[30px] justify-center mb-36 px-3.5 md:px-0">
         {Products.map((product) => {
           return <ProductCard key={product.name} {...product} />;
         })}
       </div>
       <BestSale />
-    </div>
+    </section>
   );
 }

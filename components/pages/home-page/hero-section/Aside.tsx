@@ -1,15 +1,37 @@
+import { ChevronRight } from "lucide-react";
+
 export default function PageAsideAside() {
   return (
-    <ul className="list-none border-r py-8">
-      <li>Woman's Fashion</li>
-      <li>Men's Fashion</li>
-      <li>Electronics</li>
-      <li>Home & Lifestyle</li>
-      <li>Medicine</li>
-      <li>Sports & Outdoor</li>
-      <li>Baby's & Toys</li>
-      <li>Groceries & Pets</li>
-      <li>Health & Beauty</li>
+    <ul className="list-none border-r border-gray-300 py-8 w-56 hidden md:block">
+      <li className="hover:text-primary flex justify-between items-center">
+        <a href="#">Woman's Fashion</a>
+        <button><ChevronRight /></button>
+      </li>
+      <li className="hover:text-primary flex justify-between items-center">
+        <a href="#">Men's Fashion</a>
+        <button><ChevronRight /></button>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Electronics</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Home & Lifestyle</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Medicine</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Sports & Outdoor</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Baby's & Toys</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Groceries & Pets</a>
+      </li>
+      <li className="hover:text-primary">
+        <a href="#">Health & Beauty</a>
+      </li>
     </ul>
   );
 }

@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 
 function IPhoneSlide() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between w-full h-full p-8 md:p-12 relative">
+    <div className="flex  items-center justify-between w-full p-3 md:p-12 relative">
       {/* Text Section (Left) */}
       <div className="text-left z-10 space-y-4">
         <div className="flex items-center space-x-3">
@@ -10,9 +10,9 @@ function IPhoneSlide() {
           <span className="text-3xl font-bold">
             <img src="/apple-logo.svg" alt="apple logo" className="w-8 h-8" />
           </span>
-          <span className="text-lg">iPhone 14 Series</span>
+          <span className="md:text-lg">iPhone 14 Series</span>
         </div>
-        <h1 className="text-6xl md:text-7xl font-bold leading-tight">
+        <h1 className="text-xl md:text-7xl font-bold leading-tight">
           Up to 10%
           <br />
           off Voucher
@@ -41,7 +41,7 @@ function IPhoneSlide() {
       </div>
 
       {/* Image Section (Right) - Replace with actual image */}
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60 md:opacity-100 flex items-center justify-end pr-8">
+      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60 md:opacity-100 flex items-center justify-end md:pr-8">
         <div className="w-[400px] h-[400px] rounded-[4rem] flex items-center justify-center">
           <img src="/iPhone.png" />
         </div>
