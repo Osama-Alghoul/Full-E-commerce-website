@@ -2,7 +2,7 @@ import Carousel from "./Carousel";
 
 function IPhoneSlide() {
   return (
-    <div className="flex  items-center justify-between w-full p-3 md:p-12 relative">
+    <div className="flex  items-center justify-between w-full p-7 md:p-12 relative">
       {/* Text Section (Left) */}
       <div className="text-left z-10 space-y-4">
         <div className="flex items-center space-x-3">
@@ -12,7 +12,7 @@ function IPhoneSlide() {
           </span>
           <span className="md:text-lg">iPhone 14 Series</span>
         </div>
-        <h1 className="text-xl md:text-7xl font-bold leading-tight">
+        <h1 className="text-2xl lg:text-7xl md:text-5xl font-bold leading-tight">
           Up to 10%
           <br />
           off Voucher
@@ -20,7 +20,7 @@ function IPhoneSlide() {
         {/* Shop Now button */}
         <a
           href="#"
-          className="inline-flex items-center mt-6 text-lg border-b border-white hover:text-red-400 transition duration-300"
+          className="inline-flex items-center md:mt-6 text-lg border-b border-white hover:text-red-400 transition duration-300"
         >
           Shop Now
           <svg

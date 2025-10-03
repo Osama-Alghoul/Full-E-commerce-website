@@ -5,7 +5,7 @@ import Button from "../../../ui/Button";
 
 export default function Products() {
   return (
-    <section className="pt-[60px] pb-36 flex flex-col gap-[60px] items-center px-5 md:px-0">
+    <section className="pt-[60px] pb-36 flex flex-col gap-[60px] items-center px-5 lg:px-0">
       <div>
         <div className="mb-[60px]">
           <SectionTitle title="Our Products" bigTitle="Explore Our Products" />

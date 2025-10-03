@@ -44,7 +44,7 @@ const Carousel: React.FC<CarouselProps> = ({
           // Tailwind CSS: flex-shrink-0 ensures slides don't shrink, w-full makes each take full width
           <div
             key={index}
-            className="flex-shrink-0 w-full h-[400px] flex items-center justify-center relative"
+            className="flex-shrink-0 w-full h-[300px] md:h-[400px] flex items-center justify-center relative"
           >
             {slide}
           </div>

@@ -7,7 +7,7 @@ import BestSale from "./BestSellingItem";
 export default function BestSelling() {
   return (
     <section className="pt-16">
-      <div className="flex justify-between pb-[60px] flex-wrap px-3.5 md:px-0">
+      <div className="flex justify-between pb-[60px] flex-wrap px-3.5 lg:px-0">
         <SectionTitle title="This Month" bigTitle="Best Selling Products" />
         <Button className="self-end">View All</Button>
       </div>

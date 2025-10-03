@@ -8,7 +8,7 @@ interface HeaderProps {
 export default function Header({ type = "guest" }: HeaderProps) {
   const active = "underline";
   return (
-    <header className="flex justify-between pt-10 pb-4 border-b border-gray-300 px-6 md:px-32 flex-wrap">
+    <header className="flex justify-between pt-10 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
       <div className="text-2xl font-bold text-light">Exclusive</div>
       <nav>
         <ul className="gap-12 list-none hidden md:flex">
@@ -34,9 +34,11 @@ export default function Header({ type = "guest" }: HeaderProps) {
           </li>
         </ul>
       </nav>
-      <div className="flex">
-        <input type="search" placeholder={`What are you looking for?`} />
-        <Search />
+      <div className="flex items-center gap-2.5">
+        <div className="text-xs w-56 bg-secondary px-3 py-1.5 rounded-sm flex">
+          <input type="search" placeholder={`What are you looking for?`} className="flex-1 outline-none bg-transparent" />
+          <Search />
+        </div>
         <div>
           <Heart />
         </div>

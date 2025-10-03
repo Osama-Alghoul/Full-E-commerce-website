@@ -3,7 +3,7 @@ import CategoriesCards from "./CategoriesCards"
 
 export default function Categories() {
   return (
-    <section className="px-3.5 md:px-0">
+    <section className="px-3.5 lg:px-0">
       <SectionTitle title="Browse By Category" bigTitle="Categories" />
       <CategoriesCards />
     </section>

@@ -4,7 +4,7 @@ import BurgerMenu from "../../../ui/BurgerMenu";
 
 export default function Hero() {
   return (
-    <section className="px-5 md:px-0">
+    <section className="px-5 lg:px-0">
       <BurgerMenu
         links={[
           { label: "Woman's Fashion", href: "#" },

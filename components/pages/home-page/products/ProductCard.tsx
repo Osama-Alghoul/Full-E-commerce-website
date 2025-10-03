@@ -40,19 +40,19 @@ export default function ProductCard({
         <div className="flex justify-between w-full p-3">
           {/* Check for 'new' and 'sales' */}
           {isNew && (
-            <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit">
+            <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit text-white">
               New
             </span>
           )}
           {/* Change: Use 'sales' which is passed as a percentage */}
 
-          <span
+          {!isNew && <span
             className={`text-white bg-primary rounded-sm px-3 py-1 h-fit ${
               sales !== 0 ? "" : "opacity-0"
             }`}
           >
             -{sales}%
-          </span>
+          </span>}
 
           <div>
             <Heart className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white" />

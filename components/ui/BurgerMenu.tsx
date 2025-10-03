@@ -13,7 +13,7 @@ export default function BurgerMenu({ links }: BurgerMenuProps) {
   };
 
   return (
-    <div className="block md:hidden relative">
+    <div className="block md:hidden relative mt-2.5">
       <button
         className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 md:hidden"
         onClick={toggleMenu}

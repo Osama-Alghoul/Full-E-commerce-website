@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="flex flex-col md:flex-row px-5 md:px-[135px] justify-between pt-20 pb-14 gap-20">
+      <div className="flex flex-col md:flex-row px-5 lg:px-[135px] pt-20 pb-14 justify-between flex-wrap md:gap-0 gap-10">
         <div className="flex flex-col gap-4">
           <div className="font-bold text-2xl">Exclusive</div>
           <div className="font-medium text-xl">Subscribe</div>
@@ -50,7 +50,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="w-28 flex flex-col gap-4">
+        <div className="flex flex-col gap-4">
           <div className="font-medium text-xl">Quick Link</div>
           <div>
             <a href="#" className="hover:text-primary">
