@@ -1,4 +1,3 @@
-import React from "react";
 import { Heart, Search, User2Icon, ShoppingCart } from "lucide-react";
 
 interface HeaderProps {
