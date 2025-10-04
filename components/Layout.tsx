@@ -1,7 +1,7 @@
 import React from "react";
 import AdsHeader from "./layout/header/AdsHeader";
 import Header from "./layout/header/MainHeader";
-import Footer from "./layout/footer/Footer"
+import Footer from "./layout/footer/Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

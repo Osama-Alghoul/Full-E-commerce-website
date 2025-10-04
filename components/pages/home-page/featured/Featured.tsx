@@ -4,7 +4,7 @@ export default function Featured() {
   return (
     <section className="px-3.5 lg:px-0">
       <SectionTitle title="Featured" bigTitle="New Arrival" />
-      <main className="min-h-screen p-4 md:p-8">
+      <main className="p-4 md:p-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2">
             {/* PlayStation 5 - Large Card */}
