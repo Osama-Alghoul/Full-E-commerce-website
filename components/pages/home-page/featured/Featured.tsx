@@ -35,7 +35,7 @@ export default function Featured() {
 
             {/* Women's Collections */}
             <div className="group relative overflow-hidden rounded-lg bg-black">
-              <div className="relative h-[300px] px-3.5 pt-3.5">
+              <div className="relative h-[300px]">
                 <img
                   src="/woman.png"
                   alt="Women's Collections"
