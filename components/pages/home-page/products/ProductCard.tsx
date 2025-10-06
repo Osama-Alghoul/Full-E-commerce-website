@@ -1,4 +1,5 @@
 import { Heart, Eye, Star } from "lucide-react";
+import React, { useState } from "react";
 
 export default function ProductCard({
   new: isNew = false,
@@ -12,39 +13,43 @@ export default function ProductCard({
 }: {
   new?: boolean;
   sales?: number;
-  imgSrc: string;
+  imgSrc: string[];
   name: string;
   price: number;
   rating: number;
   reviewCount: number;
   colors?: string[];
 }) {
-  // 1. Calculate discounted price and determine the price to display
+  
   let displayedPrice = price;
   let discountedPrice;
 
   if (sales > 0) {
-    // If 'sales' (which represents the sale percentage) is present, calculate the discounted price
+    
     discountedPrice = price * (1 - sales / 100);
     displayedPrice = discountedPrice;
   }
 
-  // 2. Determine the number of full stars and empty stars to render (total stars should be 5)
   const maxRating = 5;
   const fullStars = Math.round(rating); // Math.round for accurate visual representation
   const emptyStars = maxRating - fullStars;
+
+  const [productColor, setProductColor] = useState(0);
+
+  function handleColorChange(index: number) {
+    setProductColor(index);
+  }
 
   return (
     <div className="w-[270px] group flex-none">
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
         <div className="flex justify-between w-full p-3">
-          {/* Check for 'new' and 'sales' */}
+          
           {isNew && (
             <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit text-white">
               New
             </span>
           )}
-          {/* Change: Use 'sales' which is passed as a percentage */}
 
           {!isNew && <span
             className={`text-white bg-primary rounded-sm px-3 py-1 h-fit ${
@@ -61,7 +66,7 @@ export default function ProductCard({
         </div>
 
         <img
-          src={imgSrc}
+          src={imgSrc[productColor || 0]}
           className="absolute inset-0 w-3/5 h-9/12 m-auto object-contain -z-0"
         />
         <div className="text-white bg-black text-center py-2 group-hover:block md:hidden">
@@ -104,14 +109,15 @@ export default function ProductCard({
           </span>
         </div>
         {colors?.length !== 0 &&
-          colors?.map((color) => {
+          colors?.map((color, index) => {
             return (
                 <div
-                className={`rounded-full w-5 h-5 inline-block mr-2 mt-2 transition-all cursor-pointer hover:scale-110`}
+                key={index}
+                className={`rounded-full w-5 h-5 inline-block mr-2 mt-2 transition-all cursor-pointer hover:scale-110 ${
+                  productColor === index ? "border-2" : ""
+                }`}
                 style={{ backgroundColor: `${color}` }}
-                onClick={(e) => {
-                  e.currentTarget.classList.toggle("border-2");
-                }}
+                onClick={() => handleColorChange(index)}
                 ></div>
             );
           })}

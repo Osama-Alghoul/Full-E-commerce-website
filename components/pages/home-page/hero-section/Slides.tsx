@@ -1,6 +1,6 @@
 import Carousel from "./Carousel";
 
-function IPhoneSlide() {
+function IPhoneSlide({ title1, title2 }: { title1?: string; title2?: string }) {
   return (
     <div className="flex  items-center justify-between w-full p-7 md:p-12 relative">
       {/* Text Section (Left) */}
@@ -13,9 +13,9 @@ function IPhoneSlide() {
           <span className="md:text-lg">iPhone 14 Series</span>
         </div>
         <h1 className="text-2xl lg:text-7xl md:text-5xl font-bold leading-tight">
-          Up to 10%
+          {title1 || "Up to 10%"} 
           <br />
-          off Voucher
+          {title2 || "off Voucher"}
         </h1>
         {/* Shop Now button */}
         <a
@@ -55,8 +55,8 @@ export default function CarouselSlides() {
     <Carousel
       slides={[
         <IPhoneSlide key="s1" />,
-        <IPhoneSlide key="s2" />,
-        <IPhoneSlide key="s3" />,
+        <IPhoneSlide key="s2" title2="and more" />,
+        <IPhoneSlide key="s3" title1="Special Offer" title2="off Voucher" />,
       ]}
       autoPlayInterval={5000} // Autoplay every 5 seconds
     />

@@ -2,7 +2,7 @@ export const Products = [
   {
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
-    imgSrc: "/gamepad.png",
+    imgSrc: ["/gamepad.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,
@@ -10,7 +10,7 @@ export const Products = [
   {
     name: "AK-900 Wired Keyboard",
     price: 1160,
-    imgSrc: "/keyboard.png",
+    imgSrc: ["/keyboard.png"],
     sales: 35,
     rating: 4,
     reviewCount: 10,
@@ -18,7 +18,7 @@ export const Products = [
   {
     name: "IPS LCD Gaming Monitor",
     price: 400,
-    imgSrc: "/monitor.png",
+    imgSrc: ["/monitor.png"],
     sales: 30,
     rating: 4,
     reviewCount: 10,
@@ -26,7 +26,7 @@ export const Products = [
   {
     name: "S-Series Comfort Chair",
     price: 400,
-    imgSrc: "/chair.png",
+    imgSrc: ["/chair.png"],
     sales: 25,
     rating: 4,
     reviewCount: 10,
@@ -34,7 +34,7 @@ export const Products = [
   {
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
-    imgSrc: "/gamepad.png",
+    imgSrc: ["/gamepad.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,
@@ -42,7 +42,7 @@ export const Products = [
   {
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
-    imgSrc: "/gamepad.png",
+    imgSrc: ["/gamepad.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,
@@ -50,7 +50,7 @@ export const Products = [
   {
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
-    imgSrc: "/gamepad.png",
+    imgSrc: ["/gamepad.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,
@@ -58,7 +58,7 @@ export const Products = [
   {
     name: "HAVIT HV-G92 Gamepad",
     price: 120,
-    imgSrc: "/gamepad.png",
+    imgSrc: ["/gamepad.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,

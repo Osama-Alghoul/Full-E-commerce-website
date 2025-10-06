@@ -2,7 +2,7 @@ export const Products = [
   {
     name: "The North Coat",
     price: 360,
-    imgSrc: "/coat.png",
+    imgSrc: ["/coat.png"],
     sales: 27.7,
     rating: 5,
     reviewCount: 65,
@@ -10,7 +10,7 @@ export const Products = [
   {
     name: "Gucci duffle bag",
     price: 1160,
-    imgSrc: "/gucci-bag.png",
+    imgSrc: ["/gucci-bag.png"],
     sales: 20,
     rating: 4,
     reviewCount: 10,
@@ -18,7 +18,7 @@ export const Products = [
   {
     name: "RGB liquid CPU Cooler",
     price: 170,
-    imgSrc: "/rgb-cooler.png",
+    imgSrc: ["/rgb-cooler.png"],
     sales: 40,
     rating: 4,
     reviewCount: 10,
@@ -26,7 +26,7 @@ export const Products = [
   {
     name: "Small BookShelf",
     price: 360,
-    imgSrc: "/bookshelf.png",
+    imgSrc: ["/bookshelf.png"],
     rating: 4,
     reviewCount: 10,
   },
