@@ -20,12 +20,10 @@ export default function ProductCard({
   reviewCount: number;
   colors?: string[];
 }) {
-  
   let displayedPrice = price;
   let discountedPrice;
 
   if (sales > 0) {
-    
     discountedPrice = price * (1 - sales / 100);
     displayedPrice = discountedPrice;
   }
@@ -44,25 +42,33 @@ export default function ProductCard({
     <div className="w-[270px] group flex-none">
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
         <div className="flex justify-between w-full p-3">
-          
           {isNew && (
             <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit text-white">
               New
             </span>
           )}
 
-          {!isNew && <span
-            className={`text-white bg-primary rounded-sm px-3 py-1 h-fit ${
-              sales !== 0 ? "" : "opacity-0"
-            }`}
-          >
-            -{sales}%
-          </span>}
+          {!isNew && (
+            <span
+              className={`text-white bg-primary rounded-sm px-3 py-1 h-fit ${
+                sales !== 0 ? "" : "opacity-0"
+              }`}
+            >
+              -{sales}%
+            </span>
+          )}
 
           <div>
             <Heart className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white" />
             <Eye className="bg-white w-8 h-8 p-1 rounded-full hover:bg-primary hover:text-white" />
           </div>
+        </div>
+
+        {/* Preload images to avoid flickering on color change */}
+        <div style={{ display: "none" }}>
+          {imgSrc.map((src, index) => (
+            <img key={`preload-${index}`} src={src} alt="" />
+          ))}
         </div>
 
         <img
@@ -111,14 +117,14 @@ export default function ProductCard({
         {colors?.length !== 0 &&
           colors?.map((color, index) => {
             return (
-                <div
+              <div
                 key={index}
                 className={`rounded-full w-5 h-5 inline-block mr-2 mt-2 transition-all cursor-pointer hover:scale-110 ${
                   productColor === index ? "border-2" : ""
                 }`}
                 style={{ backgroundColor: `${color}` }}
                 onClick={() => handleColorChange(index)}
-                ></div>
+              ></div>
             );
           })}
       </div>

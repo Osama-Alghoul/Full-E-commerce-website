@@ -14,6 +14,7 @@ export default function Featured() {
                   src="/image.png"
                   alt="PlayStation 5"
                   className="object-cover h-full w-full"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-8">
@@ -39,7 +40,8 @@ export default function Featured() {
                 <img
                   src="/woman.png"
                   alt="Women's Collections"
-                  className="object-cover h-full w-full "
+                  className="object-cover h-full w-full"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">
@@ -68,6 +70,7 @@ export default function Featured() {
                     src="/speakers.png"
                     alt="Speakers"
                     className="object-cover p-2.5"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-6">
@@ -94,6 +97,7 @@ export default function Featured() {
                     src="/perfume.png"
                     alt="Perfume"
                     className="object-cover"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-6">
