@@ -1,5 +1,5 @@
 import { Heart, Eye, Star } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 export default function ProductCard({
   new: isNew = false,
