@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useCallback, type ReactNode } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  type ReactNode,
+  TouchEvent,
+} from "react";
 
 interface CarouselProps {
   slides: ReactNode[];
@@ -12,36 +19,71 @@ const Carousel: React.FC<CarouselProps> = ({
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const totalSlides = slides.length;
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const isSwiping = useRef(false);
 
-  // Function to move to the next slide
+  const goToPrev = useCallback(() => {
+    setActiveIndex((current) =>
+      current === 0 ? totalSlides - 1 : current - 1
+    );
+  }, [totalSlides]);
+
   const goToNext = useCallback(() => {
     setActiveIndex((current) =>
       current === totalSlides - 1 ? 0 : current + 1
     );
   }, [totalSlides]);
 
-  // Autoplay Effect
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0].clientX);
+    isSwiping.current = true; // Mark as potentially swiping
+  };
+
+  const handleTouchEnd = (e: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX === null) return; // Ignore if touch started outside
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const difference = touchStartX - touchEndX; // positive for left swipe, negative for right swipe
+    const SWIPE_THRESHOLD = 50; // Minimum distance for a recognized swipe
+
+    setTouchStartX(null);
+
+    if (Math.abs(difference) > SWIPE_THRESHOLD) {
+      if (difference > 0) {
+        goToNext();
+      } else {
+        goToPrev();
+      }
+    }
+    setTimeout(() => {
+      isSwiping.current = false;
+    }, 100);
+  };
+
   useEffect(() => {
     if (autoPlayInterval > 0) {
       const interval = setInterval(() => {
-        goToNext();
+        if (!isSwiping.current) {
+          goToNext();
+        }
       }, autoPlayInterval);
 
-      // Cleanup the interval when the component unmounts or interval changes
       return () => clearInterval(interval);
     }
   }, [goToNext, autoPlayInterval]);
 
-  // --- Rendering ---
   return (
-    <div className="relative w-full overflow-hidden bg-black text-white rounded-lg shadow-2xl max-w-4xl mx-auto mt-8">
+    <div
+      className="relative w-full overflow-hidden bg-black text-white rounded-lg shadow-2xl max-w-4xl mx-auto mt-8 cursor-grab"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* --- Slide Content Wrapper --- */}
       <div
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
       >
         {slides.map((slide, index) => (
-          // Tailwind CSS: flex-shrink-0 ensures slides don't shrink, w-full makes each take full width
           <div
             key={index}
             className="flex-shrink-0 w-full h-[300px] md:h-[400px] flex items-center justify-center relative"
