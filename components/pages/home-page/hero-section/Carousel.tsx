@@ -4,7 +4,7 @@ import React, {
   useCallback,
   useRef,
   type ReactNode,
-  TouchEvent,
+  type TouchEvent,
 } from "react";
 
 interface CarouselProps {

@@ -1,15 +1,7 @@
-import './App.css'
-import HomePage from "../components/HomePage"
-import ScrollToTopButton from "../components/ui/ScrollToTop"
+import { RouterProvider } from 'react-router-dom' 
+import router from './routes'
+import './App.css' 
 
-function App() {
-
-  return (
-    <>
-      <HomePage />
-      <ScrollToTopButton />
-    </>
-  )
+export default function App() {
+  return <RouterProvider router={router} />
 }
-
-export default App

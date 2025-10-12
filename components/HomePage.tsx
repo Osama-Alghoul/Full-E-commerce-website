@@ -1,4 +1,3 @@
-import Layout from "./Layout";
 import Hero from "./pages/home-page/hero-section/Hero";
 import Sales from "./pages/home-page/sales/Sales";
 import Categories from "./pages/home-page/categories/Categories";
@@ -9,7 +8,7 @@ import Trusted from "./pages/home-page/trust-badges/Trusted";
 
 export default function HomePage() {
   return (
-    <Layout>
+    <>
       <Hero />
       <Sales />
       <Categories />
@@ -17,6 +16,6 @@ export default function HomePage() {
       <Products />
       <Featured />
       <Trusted />
-    </Layout>
+    </>
   );
 }

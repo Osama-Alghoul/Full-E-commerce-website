@@ -1,41 +1,63 @@
 import { Heart, Search, User2Icon, ShoppingCart } from "lucide-react";
+import { Link } from "react-router";
+import { useState } from "react";
 
 interface HeaderProps {
   type?: "guest" | "user";
 }
 
 export default function Header({ type = "guest" }: HeaderProps) {
-  const active = "underline";
+  const [active, setActive] = useState(0);
   return (
     <header className="flex justify-between pt-10 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
       <div className="text-2xl font-bold text-light">Exclusive</div>
       <nav>
         <ul className="gap-12 list-none hidden md:flex">
-          <li className="hover:text-primary hover:underline">
-            <a href="#" className={active}>
+          <li>
+            <Link
+              to="/"
+              className={`${active === 0 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              onClick={() => setActive(0)}
+            >
               Home
-            </a>
+            </Link>
           </li>
-          <li className="hover:text-primary hover:underline">
-            <a href="#" className="hover:text-primary hover:underline">
+          <li>
+            <Link
+              to="/about"
+              className={`${active === 1 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              onClick={() => setActive(1)}
+            >
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-primary hover:underline">
+            <Link
+              to="/contact"
+              className={`${active === 2 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              onClick={() => setActive(2)}
+            >
               Contact
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" className="hover:text-primary hover:underline">
-              Sign Up
-            </a>
+            <Link
+              to="/auth/register"
+              className={`${active === 3 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              onClick={() => setActive(3)}
+            >
+              Sign up
+            </Link>
           </li>
         </ul>
       </nav>
       <div className="flex items-center gap-2.5">
         <div className="text-xs w-56 bg-secondary px-3 py-1.5 rounded-sm flex">
-          <input type="search" placeholder={`What are you looking for?`} className="flex-1 outline-none bg-transparent" />
+          <input
+            type="search"
+            placeholder={`What are you looking for?`}
+            className="flex-1 outline-none bg-transparent"
+          />
           <Search />
         </div>
         <div>
