@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import Breadcrumbs from "../../ui/BreadCrumb";
 import CartTable from "./cartTable";
 import Button from "../../ui/Button";
+import CartBill from "./cartBill";
 
 export default function Cart() {
   const goods = [
@@ -41,18 +42,7 @@ export default function Cart() {
           </form>
           <div className="border rounded-sm px-6 py-8 w-[470px]">
             <div className="font-medium text-xl">Cart Total</div>
-            <div className="flex justify-between border-b py-4 border-b-gray-300">
-              <span>Subtotal</span>
-              <span>${subTotal}</span>
-            </div>
-            <div className="flex justify-between border-b py-4 border-b-gray-300">
-              <span>Shipping</span>
-              <span>Free</span>
-            </div>
-            <div className="flex justify-between py-4">
-              <span>Total</span>
-              <span>${subTotal}</span>
-            </div>
+            <CartBill subTotal={subTotal} />
             <Link to={"/cart/checkout"} className="m-auto">
               <Button>Procees to checkout</Button>
             </Link>
