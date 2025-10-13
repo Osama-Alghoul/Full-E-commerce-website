@@ -1,4 +1,5 @@
-import React from 'react';
+import { Link } from "react-router";
+
 /**
  * Renders a breadcrumb navigation trail using Tailwind CSS.
  *
@@ -12,7 +13,7 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
   }
 
   return (
-    <nav aria-label="breadcrumb" className="py-3 px-4 sm:px-6 lg:px-8">
+    <nav aria-label="breadcrumb" className="py-20 px-4 sm:px-6 lg:px-0">
       <ol className="flex items-center space-x-2">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
@@ -22,7 +23,7 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
               {isLast ? (
                 // Current (last) item: styled as bold text, no link
                 <span
-                  className="text-sm font-semibold text-gray-700 truncate"
+                  className="text-sm truncate"
                   aria-current="page"
                 >
                   {item.label}
@@ -30,16 +31,16 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
               ) : (
                 // Intermediate item: styled as a clickable link
                 <>
-                  <a
-                    href={item.path}
-                    className="text-sm font-medium text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out"
+                  <Link
+                    to={item.path as string}
+                    className="text-sm opacity-50 hover:text-primary transition duration-150 ease-in-out"
                   >
                     {item.label}
-                  </a>
+                  </Link>
 
                   {/* Separator icon */}
                   <span
-                    className="mx-2 text-gray-400 font-normal"
+                    className="mx-2 opacity-50 font-normal"
                     aria-hidden="true"
                   >
                     /

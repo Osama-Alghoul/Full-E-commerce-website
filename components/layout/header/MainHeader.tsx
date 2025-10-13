@@ -16,7 +16,11 @@ export default function Header({ type = "guest" }: HeaderProps) {
           <li>
             <Link
               to="/"
-              className={`${active === 0 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              className={`${
+                active === 0
+                  ? "text-primary underline"
+                  : "hover:text-primary hover:underline"
+              }`}
               onClick={() => setActive(0)}
             >
               Home
@@ -25,7 +29,11 @@ export default function Header({ type = "guest" }: HeaderProps) {
           <li>
             <Link
               to="/about"
-              className={`${active === 1 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              className={`${
+                active === 1
+                  ? "text-primary underline"
+                  : "hover:text-primary hover:underline"
+              }`}
               onClick={() => setActive(1)}
             >
               About
@@ -34,7 +42,11 @@ export default function Header({ type = "guest" }: HeaderProps) {
           <li>
             <Link
               to="/contact"
-              className={`${active === 2 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              className={`${
+                active === 2
+                  ? "text-primary underline"
+                  : "hover:text-primary hover:underline"
+              }`}
               onClick={() => setActive(2)}
             >
               Contact
@@ -43,7 +55,11 @@ export default function Header({ type = "guest" }: HeaderProps) {
           <li>
             <Link
               to="/auth/register"
-              className={`${active === 3 ? "text-primary underline" : "hover:text-primary hover:underline"}`}
+              className={`${
+                active === 3
+                  ? "text-primary underline"
+                  : "hover:text-primary hover:underline"
+              }`}
               onClick={() => setActive(3)}
             >
               Sign up
@@ -64,7 +80,9 @@ export default function Header({ type = "guest" }: HeaderProps) {
           <Heart />
         </div>
         <div>
-          <ShoppingCart />
+          <Link to={"/cart"}>
+            <ShoppingCart />
+          </Link>
         </div>
         {type === "user" && (
           <div>

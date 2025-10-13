@@ -8,7 +8,7 @@ import Trusted from "./pages/home-page/trust-badges/Trusted";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="max-w-[1170px] m-auto">
       <Hero />
       <Sales />
       <Categories />
@@ -16,6 +16,6 @@ export default function HomePage() {
       <Products />
       <Featured />
       <Trusted />
-    </>
+    </div>
   );
 }

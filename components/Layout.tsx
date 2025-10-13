@@ -10,7 +10,7 @@ export default function Layout() {
         Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
       </AdsHeader>
       <Header />
-      <div className="max-w-[1170px] m-auto">
+      <div>
         <Outlet />
       </div>
       <Footer />
