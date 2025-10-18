@@ -1,17 +1,10 @@
 import Breadcrumbs from "../../ui/BreadCrumb";
+import SectionTitle from "../../ui/SectionTitle";
+import { mockData } from "../../../mock-data/productDetails";
+import ProductCard from "../home-page/products/ProductCard";
 
 export default function ProductDetails() {
-  const mockData = {
-    name: "Havic HV G-92 Gamepad",
-    imgs: ["", "", "", ""],
-    rating: 4,
-    reviews: 150,
-    inStock: true,
-    price: 192.0,
-    description:
-      "PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.",
-    colors: ["blue", "red"],
-  };
+  
   return (
     <section className="px-6 lg:px-32 m-auto pb-36">
       <Breadcrumbs
@@ -23,11 +16,45 @@ export default function ProductDetails() {
       />
       <div className="pb-36">
         <div className="flex justify-between">
-          <div className="flex-2/3"></div>
+          <div className="flex gap-4 flex-2/3">
+            <div>
+              {mockData.imgs.map((image) => {
+                return (
+                  <div className="w-[170px] p-2.5 bg-secondary">
+                    <img src={image} alt="joystick" />
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="flex-3/4">
+              <div className="w-[500px] bg-secondary">
+                <img src="/joy1.png" alt="joystick" />
+              </div>
+            </div>
+          </div>
           <div>
-            <h2></h2>
+            <h2>{mockData.name}</h2>
+            <div></div>
+            <div className="text-2xl">${mockData.price}</div>
+            <div className="text-sm">{mockData.description}</div>
+            <hr />
+            <div>Colors</div>
+            <div>Sizes</div>
+            <div></div>
+            <div></div>
           </div>
         </div>
+      </div>
+      <div>
+        <SectionTitle title="Related Item" />
+            <div className="flex justify-between pt-12">
+              {mockData.related.map((product) => {
+                return(
+                  <ProductCard {...product} />
+                )
+              })}
+            </div>
       </div>
     </section>
   );

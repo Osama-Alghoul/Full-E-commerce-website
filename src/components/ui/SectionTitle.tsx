@@ -3,7 +3,7 @@ export default function SectionTitle({
   bigTitle,
 }: {
   title: string;
-  bigTitle: string;
+  bigTitle?: string;
 }) {
   return (
     <div>
