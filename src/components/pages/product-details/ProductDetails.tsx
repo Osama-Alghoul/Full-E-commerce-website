@@ -3,6 +3,7 @@ import Breadcrumbs from "../../ui/BreadCrumb";
 export default function ProductDetails() {
   const mockData = {
     name: "Havic HV G-92 Gamepad",
+    imgs: ["", "", "", ""],
     rating: 4,
     reviews: 150,
     inStock: true,
