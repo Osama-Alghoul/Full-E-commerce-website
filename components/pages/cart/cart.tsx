@@ -30,8 +30,8 @@ export default function Cart() {
             <Button variant="outline">Upgrade Cart</Button>
           </Link>
         </div>
-        <div className="flex justify-between items-start pt-20">
-          <form className="flex gap-4">
+        <div className="flex justify-between items-start pt-20 flex-wrap">
+          <form className="flex gap-4 flex-wrap">
             <input
               type="text"
               required

@@ -25,7 +25,7 @@ export default function Button({
   }
   return (
     <button
-      className={`${variantClass} px-12 py-4 rounded-sm  ${className}`}
+      className={`${variantClass} md:px-12 px-10 py-4 rounded-sm  ${className}`}
       type={type}
     >
       {children}

@@ -1,3 +1,6 @@
+import classes from "./checkOutInputs.module.css";
+import React from "react";
+
 interface props {
   id: string;
   name: string;
@@ -5,7 +8,7 @@ interface props {
   type?: string;
   value: string | number;
   required?: boolean;
-  onchange: () => void;
+  onchange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
@@ -18,10 +21,10 @@ export default function Input({
   onchange,
 }: props) {
   return (
-    <>
-      <label htmlFor={id}>
+    <div className={classes["input-group"]}>
+      <label htmlFor={id} className={classes["input-label"]}>
         {label}
-        {required ? <span className="text-red-500">*</span> : ""}
+        {required && <span className={classes.required_star}>*</span>}
       </label>
       <input
         id={id}
@@ -29,8 +32,9 @@ export default function Input({
         value={value}
         required={required}
         name={name}
-        onChange={onchange}
+        onChange={(e) => onchange(e)}
+        className={`bg-secondary ${classes["form-input"]}`}
       />
-    </>
+    </div>
   );
 }

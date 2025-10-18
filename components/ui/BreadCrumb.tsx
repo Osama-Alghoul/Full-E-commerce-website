@@ -13,8 +13,8 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
   }
 
   return (
-    <nav aria-label="breadcrumb" className="py-20 px-4 sm:px-6 lg:px-0">
-      <ol className="flex items-center space-x-2">
+    <nav aria-label="breadcrumb" className="md:py-20 py-14 px-4 sm:px-6 lg:px-0">
+      <ol className="flex items-center">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 
@@ -23,7 +23,7 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
               {isLast ? (
                 // Current (last) item: styled as bold text, no link
                 <span
-                  className="text-sm truncate"
+                  className="md:text-sm text-xs truncate"
                   aria-current="page"
                 >
                   {item.label}
@@ -33,7 +33,7 @@ const Breadcrumbs = ({ items }: { items: { label: string; path?: string }[] }) =
                 <>
                   <Link
                     to={item.path as string}
-                    className="text-sm opacity-50 hover:text-primary transition duration-150 ease-in-out"
+                    className="md:text-sm text-xs opacity-50 hover:text-primary transition duration-150 ease-in-out"
                   >
                     {item.label}
                   </Link>

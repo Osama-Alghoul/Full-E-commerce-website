@@ -1,27 +1,27 @@
 import { Heart, Search, User2Icon, ShoppingCart } from "lucide-react";
-import { Link } from "react-router";
-import { useState } from "react";
+import { Link, useLocation } from "react-router";
 
 interface HeaderProps {
   type?: "guest" | "user";
 }
 
 export default function Header({ type = "guest" }: HeaderProps) {
-  const [active, setActive] = useState(0);
+  const location = useLocation();
   return (
     <header className="flex justify-between pt-10 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
-      <div className="text-2xl font-bold text-light">Exclusive</div>
+      <Link to={"/"}>
+        <div className="text-2xl font-bold text-light">Exclusive</div>
+      </Link>
       <nav>
         <ul className="gap-12 list-none hidden md:flex">
           <li>
             <Link
               to="/"
               className={`${
-                active === 0
+                location.pathname === "/"
                   ? "text-primary underline"
                   : "hover:text-primary hover:underline"
               }`}
-              onClick={() => setActive(0)}
             >
               Home
             </Link>
@@ -30,11 +30,10 @@ export default function Header({ type = "guest" }: HeaderProps) {
             <Link
               to="/about"
               className={`${
-                active === 1
+                location.pathname === "/about"
                   ? "text-primary underline"
                   : "hover:text-primary hover:underline"
               }`}
-              onClick={() => setActive(1)}
             >
               About
             </Link>
@@ -43,11 +42,10 @@ export default function Header({ type = "guest" }: HeaderProps) {
             <Link
               to="/contact"
               className={`${
-                active === 2
+                location.pathname === "/contact"
                   ? "text-primary underline"
                   : "hover:text-primary hover:underline"
               }`}
-              onClick={() => setActive(2)}
             >
               Contact
             </Link>
@@ -56,18 +54,17 @@ export default function Header({ type = "guest" }: HeaderProps) {
             <Link
               to="/auth/register"
               className={`${
-                active === 3
+                location.pathname === "/auth/register"
                   ? "text-primary underline"
                   : "hover:text-primary hover:underline"
               }`}
-              onClick={() => setActive(3)}
             >
               Sign up
             </Link>
           </li>
         </ul>
       </nav>
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-1">
         <div className="text-xs w-56 bg-secondary px-3 py-1.5 rounded-sm flex">
           <input
             type="search"
@@ -76,10 +73,10 @@ export default function Header({ type = "guest" }: HeaderProps) {
           />
           <Search />
         </div>
-        <div>
+        <div className="hover:bg-primary hover:text-white rounded-full p-2.5">
           <Heart />
         </div>
-        <div>
+        <div className="hover:bg-primary hover:text-white rounded-full p-2.5">
           <Link to={"/cart"}>
             <ShoppingCart />
           </Link>

@@ -1,5 +1,6 @@
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 
 interface BurgerMenuProps {
   links: { label: string; href: string }[];
@@ -26,12 +27,12 @@ export default function BurgerMenu({ links }: BurgerMenuProps) {
           <ul>
             {links.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="block px-4 py-2 hover:bg-gray-100"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

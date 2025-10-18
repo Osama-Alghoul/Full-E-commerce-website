@@ -5,13 +5,13 @@ import SelectMenu from "../../ui/SelectMenu";
 export default function AdsHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-black text-white flex content-between lg:px-32 py-3">
-      <div className="text-center grow-1 text-sm">
+      <div className="text-center grow-1 md:text-sm text-xs">
         {children} {" "}
         <Link href={"#"} variant={"white"}>
           ShopNow
         </Link>
       </div>
-      <SelectMenu options={["English", "Arabic"]} option={""} className="content-end" />
+      <SelectMenu options={["English", "Arabic"]} option={""} className="content-end md:text-sm text-xs" />
     </div>
   );
 }
