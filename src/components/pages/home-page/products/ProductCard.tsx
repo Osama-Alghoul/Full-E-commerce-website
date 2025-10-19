@@ -1,5 +1,7 @@
-import { Heart, Eye, Star } from "lucide-react";
+import { Heart, Eye } from "lucide-react";
 import { useState } from "react";
+import Ratings from "../../../ui/Ratings";
+import ColorSelect from "../../../ui/ColorSelect";
 
 export default function ProductCard({
   new: isNew = false,
@@ -28,15 +30,7 @@ export default function ProductCard({
     displayedPrice = discountedPrice;
   }
 
-  const maxRating = 5;
-  const fullStars = Math.round(rating); // Math.round for accurate visual representation
-  const emptyStars = maxRating - fullStars;
-
   const [productColor, setProductColor] = useState(0);
-
-  function handleColorChange(index: number) {
-    setProductColor(index);
-  }
 
   return (
     <div className="w-[270px] group flex-none snap-start">
@@ -90,41 +84,17 @@ export default function ProductCard({
           )}
         </div>
 
-        <div className="flex items-center">
-          {/* 4. Render full stars */}
-          {Array.from({ length: fullStars }).map((_, index) => (
-            <Star
-              fill="#FFAD33"
-              strokeWidth={0}
-              className="h-5 w-5"
-              key={`full-${index}`}
-            />
-          ))}
-          {/* 5. Render empty stars */}
-          {Array.from({ length: emptyStars }).map((_, index) => (
-            <Star
-              fill="#CCCCCC"
-              strokeWidth={0}
-              className="h-5 w-5"
-              key={`empty-${index}`}
-            />
-          ))}
-
-          <span className="opacity-50 font-semibold ml-2 text-sm">
-            ({reviewCount})
-          </span>
-        </div>
+        <Ratings stars={rating} reviewCount={reviewCount} />
         {colors?.length !== 0 &&
           colors?.map((color, index) => {
             return (
-              <div
+              <ColorSelect
                 key={index}
-                className={`rounded-full w-5 h-5 inline-block mr-2 mt-2 transition-all cursor-pointer hover:scale-110 ${
-                  productColor === index ? "border-2" : ""
-                }`}
-                style={{ backgroundColor: `${color}` }}
-                onClick={() => handleColorChange(index)}
-              ></div>
+                color={color}
+                index={index}
+                setProductColor={setProductColor}
+                productColor={productColor}
+              />
             );
           })}
       </div>

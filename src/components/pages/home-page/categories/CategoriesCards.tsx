@@ -6,25 +6,25 @@ import {
   Gamepad,
   Watch,
 } from "lucide-react";
-import CategoryCard from "../../../ui/CategoryCard";
+import OutlineCard from "../../../ui/OutlineCard";
 
 export default function CategoriesCards() {
   return (
       <div
         className="flex gap-[30px] py-16 overflow-x-scroll justify-center snap-x snap-mandatory"
       >
-        <CategoryCard
+        <OutlineCard
           name="Phones"
           icon={<Smartphone className="h-10 w-9" />}
         />
-        <CategoryCard name="Monitors" icon={<Monitor className="h-10 w-9" />} />
-        <CategoryCard name="SmartWatch" icon={<Watch className="h-10 w-9" />} />
-        <CategoryCard name="Cameras" icon={<Camera className="h-10 w-9" />} />
-        <CategoryCard
+        <OutlineCard name="Monitors" icon={<Monitor className="h-10 w-9" />} />
+        <OutlineCard name="SmartWatch" icon={<Watch className="h-10 w-9" />} />
+        <OutlineCard name="Cameras" icon={<Camera className="h-10 w-9" />} />
+        <OutlineCard
           name="Headphones"
           icon={<Headphones className="h-10 w-9" />}
         />
-        <CategoryCard name="Gamepads" icon={<Gamepad className="h-10 w-9" />} />
+        <OutlineCard name="Gamepads" icon={<Gamepad className="h-10 w-9" />} />
       </div>
   );
 }

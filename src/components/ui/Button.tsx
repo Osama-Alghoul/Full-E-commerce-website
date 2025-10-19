@@ -4,11 +4,13 @@ export default function Button({
   className,
   variant = "primary",
   type,
+  noPadding = false,
 }: {
   children: ReactNode;
   className?: string;
   variant?: "primary" | "green" | "outline";
   type?: "button" | "submit" | "reset";
+  noPadding?: boolean;
 }) {
   let variantClass = "";
 
@@ -25,7 +27,7 @@ export default function Button({
   }
   return (
     <button
-      className={`${variantClass} md:px-12 px-10 py-4 rounded-sm  ${className}`}
+      className={`${variantClass} ${noPadding ? "px-4" : "px-10 md:px-12"} py-4 rounded-sm  ${className} cursor-pointer`}
       type={type}
     >
       {children}

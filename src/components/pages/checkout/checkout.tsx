@@ -128,17 +128,35 @@ export default function CheckOut() {
           </div>
           <CartBill subTotal={1750} /> {/* TODO : Implement */}
           <div>
-            <input type="radio" id="bank" name="payment_method" value="bank" />
-            <label htmlFor="bank">Bank</label>
-            <div>
-              {" "}
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />
-              <img src="" alt="" />{" "}
+            <div className="flex justify-between">
+              <div className="flex gap-4 items-center">
+                <input
+                  type="radio"
+                  id="bank"
+                  name="payment_method"
+                  value="bank"
+                  className="size-6"
+                />
+                <label htmlFor="bank">Bank</label>
+              </div>
+              <div className="flex [img>&]:flex-none [img>&]:">
+                <img src="/bkash.png" alt="bkash" />
+                <img src="/visa.png" alt="Visa" />
+                <img src="/mastercard.png" alt="mastercard" />
+                <img src="/huh.png" alt="huh" />
+              </div>
             </div>
-            <input type="radio" id="cod" name="payment_method" value="cod" />
-            <label htmlFor="cod">Cash on delivery</label>
+
+            <div className="flex gap-4">
+              <input
+                type="radio"
+                id="cod"
+                name="payment_method"
+                value="cod"
+                className="size-6"
+              />
+              <label htmlFor="cod">Cash on delivery</label>
+            </div>
           </div>
           <div className="flex gap-4">
             <input
