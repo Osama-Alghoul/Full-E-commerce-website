@@ -10,16 +10,21 @@ import CategoryCard from "../../../ui/CategoryCard";
 
 export default function CategoriesCards() {
   return (
-    <div className="flex gap-[30px] py-16 flex-wrap justify-center">
-      <CategoryCard name="Phones" icon={<Smartphone className="h-10 w-9" />} />
-      <CategoryCard name="Monitors" icon={<Monitor className="h-10 w-9" />} />
-      <CategoryCard name="SmartWatch" icon={<Watch className="h-10 w-9" />} />
-      <CategoryCard name="Cameras" icon={<Camera className="h-10 w-9" />} />
-      <CategoryCard
-        name="Headphones"
-        icon={<Headphones className="h-10 w-9" />}
-      />
-      <CategoryCard name="Gamepads" icon={<Gamepad className="h-10 w-9" />} />
-    </div>
+      <div
+        className="flex gap-[30px] py-16 overflow-x-scroll justify-center snap-x snap-mandatory"
+      >
+        <CategoryCard
+          name="Phones"
+          icon={<Smartphone className="h-10 w-9" />}
+        />
+        <CategoryCard name="Monitors" icon={<Monitor className="h-10 w-9" />} />
+        <CategoryCard name="SmartWatch" icon={<Watch className="h-10 w-9" />} />
+        <CategoryCard name="Cameras" icon={<Camera className="h-10 w-9" />} />
+        <CategoryCard
+          name="Headphones"
+          icon={<Headphones className="h-10 w-9" />}
+        />
+        <CategoryCard name="Gamepads" icon={<Gamepad className="h-10 w-9" />} />
+      </div>
   );
 }

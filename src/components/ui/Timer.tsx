@@ -46,28 +46,28 @@ const Timer: React.FC<TimerProps> = ({ targetDate, theme = "light" }) => {
     >
       <div className="flex flex-col items-center mr-4">
         <div className="text-sm font-medium text-gray-700">Days</div>
-        <div className="text-4xl font-bold">
+        <div className="md:text-4xl text-3xl font-bold">
           {String(timeLeft.days).padStart(2, "0")}
         </div>
       </div>
       <span className="text-red-400 text-2xl">:</span>
       <div className="flex flex-col items-center mx-4">
         <div className="text-sm font-medium text-gray-700">Hours</div>
-        <div className="text-4xl font-bold">
+        <div className="md:text-4xl text-3xl font-bold">
           {String(timeLeft.hours).padStart(2, "0")}
         </div>
       </div>
       <span className="text-red-400 text-2xl">:</span>
       <div className="flex flex-col items-center mx-4">
         <div className="text-sm font-medium text-gray-700">Minutes</div>
-        <div className="text-4xl font-bold">
+        <div className="md:text-4xl text-3xl font-bold">
           {String(timeLeft.minutes).padStart(2, "0")}
         </div>
       </div>
       <span className="text-red-400 text-2xl">:</span>
       <div className="flex flex-col items-center ml-4">
         <div className="text-sm font-medium text-gray-700">Seconds</div>
-        <div className="text-4xl font-bold">
+        <div className="md:text-4xl text-3xl font-bold">
           {String(timeLeft.seconds).padStart(2, "0")}
         </div>
       </div>

@@ -39,7 +39,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="w-[270px] group flex-none">
+    <div className="w-[270px] group flex-none snap-start">
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
         <div className="flex justify-between w-full p-3">
           {isNew && (

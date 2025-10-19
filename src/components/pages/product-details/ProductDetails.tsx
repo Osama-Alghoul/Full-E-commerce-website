@@ -48,7 +48,7 @@ export default function ProductDetails() {
       </div>
       <div>
         <SectionTitle title="Related Item" />
-            <div className="flex justify-between pt-12">
+            <div className="flex justify-around pt-12">
               {mockData.related.map((product) => {
                 return(
                   <ProductCard {...product} />
