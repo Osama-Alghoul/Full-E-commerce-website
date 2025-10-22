@@ -32,7 +32,7 @@ export default function Sales() {
       </div>
       <ScrollContainer>
         {products.map((product) => {
-          return <ProductCard key={product.title} {...product} sales={20} />;
+          return <ProductCard key={product.id} {...product} sales={20} />;
         })}
       </ScrollContainer>
       <Button className="my-[60px] self-center">View All Products</Button>

@@ -28,7 +28,7 @@ export default function Products() {
         </div>
         <div className="flex gap-[30px] flex-wrap justify-center">
           {products.slice(0, 8).map((product) => {
-            return <ProductCard key={product.title} {...product} />;
+            return <ProductCard key={product.id} {...product} />;
           })}
         </div>
       </div>

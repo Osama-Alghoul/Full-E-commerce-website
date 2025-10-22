@@ -1,17 +1,33 @@
 import Breadcrumbs from "../../ui/BreadCrumb";
 import SectionTitle from "../../ui/SectionTitle";
-import { mockData } from "../../../mock-data/productDetails";
 import ProductCard from "../home-page/products/ProductCard";
 import Ratings from "../../ui/Ratings";
 import ColorSelect from "../../ui/ColorSelect";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OutlineCard from "../../ui/OutlineCard";
 import Adder from "../../ui/Adder";
 import Button from "../../ui/Button";
 import { ArrowLeftRightIcon, Heart, Truck } from "lucide-react";
+import type { Product } from "../../../types";
+import { mockData } from "../../../mock-data/productDetails";
 
 export default function ProductDetails() {
   const [productColor, setProductColor] = useState(0);
+    const [products, setProducts] = useState<Product[]>([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const response = await fetch(`https://fakestoreapi.com/products`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response.ok) {
+          throw new Error("Faild to fetch products");
+        }
+        const data = await response.json();
+        setProducts(data);
+      };
+      fetchData();
+    }, []);
   return (
     <section className="px-6 lg:px-32 m-auto pb-36">
       <Breadcrumbs
@@ -108,8 +124,8 @@ export default function ProductDetails() {
       <div>
         <SectionTitle title="Related Item" />
         <div className="flex justify-around pt-12 flex-wrap md:gap-0 gap-6">
-          {mockData.related.map((product) => {
-            return <ProductCard {...product} />;
+          {products.slice(0, 1).map((product) => {
+            return <ProductCard key={product.id} {...product} />;
           })}
         </div>
       </div>

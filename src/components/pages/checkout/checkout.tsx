@@ -46,14 +46,28 @@ export default function CheckOut() {
         ]}
       />
       <h2 className="font-medium text-4xl mb-20">Billing Details</h2>
-      <form className="flex justify-between">
+      <form
+        className="flex justify-between"
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          setFromData({
+            name: "",
+            companyName: "",
+            street: "",
+            apartment: "",
+            city: "",
+            phone: "",
+            email: "",
+          });
+        }}
+      >
         <div className="flex flex-col gap-16">
           <Input
             label="First Name"
             id="name"
             value={formData.name}
             name={"name"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
             required
           />
           <Input
@@ -61,14 +75,14 @@ export default function CheckOut() {
             id="companyName"
             value={formData.companyName}
             name={"companyName"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
           />
           <Input
             label="Street Address"
             id="street"
             value={formData.street}
             name={"street"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
             required
           />
           <Input
@@ -76,7 +90,7 @@ export default function CheckOut() {
             id="apartment"
             value={formData.apartment}
             name={"apartment"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
             required
           />
           <Input
@@ -84,7 +98,7 @@ export default function CheckOut() {
             id="city"
             value={formData.city}
             name={"city"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
             required
           />
           <Input
@@ -92,7 +106,7 @@ export default function CheckOut() {
             id="phone"
             value={formData.phone}
             name={"phone"}
-            onchange={(e) => setFromData()} // TODO
+            onchange={() => {}} // TODO
             required
           />
           <div>
@@ -101,7 +115,7 @@ export default function CheckOut() {
               id="email"
               value={formData.email}
               name={"email"}
-              onchange={(e) => setFromData()} // TODO
+              onchange={() => {}} // TODO
               required
             />
             <div>

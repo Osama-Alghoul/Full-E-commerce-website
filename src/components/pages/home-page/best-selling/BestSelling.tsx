@@ -29,7 +29,7 @@ export default function BestSelling() {
       </div>
       <div className="flex flex-wrap gap-[30px] justify-center mb-36 px-3.5 md:px-0">
         {products.slice(0, 4).map((product) => {
-          return <ProductCard key={product.title} {...product} />;
+          return <ProductCard key={product.id} {...product} />;
         })}
       </div>
       <BestSale />
