@@ -1,3 +1,5 @@
+import type React from "react";
+
 export interface Product {
   id: number;
   title: string;
@@ -17,5 +19,23 @@ export interface Product {
 export interface Cart {
   id: number;
   userId: number;
-  products: Product[];
+  products: { product: Product; count: number }[];
 }
+
+export type CartProviderProps = {
+  children: React.ReactNode;
+};
+
+export type CartContextProps = {
+  getItemQuantity: (id: number) => number;
+  increaseCartQuantity: (id: number) => void;
+  decreaseCartQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  cartQuantity: number;
+  cartItems: CartItem[];
+};
+
+export type CartItem = {
+  id: number;
+  quantity: number;
+};

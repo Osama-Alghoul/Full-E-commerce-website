@@ -2,6 +2,7 @@ import { Heart, Search, User2Icon, ShoppingCart } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { NavLinks } from "../../../content";
 import SlideInDrawer from "../../ui/SlideDrawer";
+import { useCartContext } from "../../../utils/CartContext";
 
 interface HeaderProps {
   type?: "guest" | "user";
@@ -38,6 +39,7 @@ const PageLinks = ({
 
 export default function Header({ type = "guest" }: HeaderProps) {
   const location = useLocation();
+  const {cartQuantity} = useCartContext();
 
   return (
     <header className="flex justify-between md:pt-10 pt-4 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
@@ -66,9 +68,12 @@ export default function Header({ type = "guest" }: HeaderProps) {
         <div className="hover:bg-primary hover:text-white rounded-full p-2.5">
           <Heart />
         </div>
-        <div className="hover:bg-primary hover:text-white rounded-full p-2.5">
+        <div className="hover:bg-primary hover:text-white rounded-full p-2.5 relative">
           <Link to={"/cart"}>
             <ShoppingCart />
+            <div className="absolute top-0 right-0 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
+              {cartQuantity}
+            </div>
           </Link>
         </div>
         {type === "user" && (

@@ -5,13 +5,6 @@ import Button from "../../ui/Button";
 import CartBill from "./cartBill";
 
 export default function Cart() {
-  const goods = [
-    { name: "LCD Monitor", img: "", price: 650, quantity: 1 },
-    { name: "LCD Monitor", img: "", price: 650, quantity: 2 },
-  ];
-  const subTotal = goods.reduce((accumulator, item) => {
-    return accumulator + item.price * item.quantity;
-  }, 0);
   return (
     <section className="px-6 lg:px-32 m-auto">
       <Breadcrumbs
@@ -20,8 +13,9 @@ export default function Cart() {
           { label: "Cart", path: "/cart" },
         ]}
       />
+      
       <div className="pb-36">
-        <CartTable goods={goods} />
+        <CartTable />
         <div className="flex justify-between">
           <Link to={"/"}>
             <Button variant="outline">Return To Shop</Button>
@@ -42,7 +36,7 @@ export default function Cart() {
           </form>
           <div className="border rounded-sm px-6 py-8 w-[470px]">
             <div className="font-medium text-xl">Cart Total</div>
-            <CartBill subTotal={subTotal} />
+            <CartBill subTotal={100} />
             <Link to={"/cart/checkout"} className="m-auto">
               <Button>Procees to checkout</Button>
             </Link>

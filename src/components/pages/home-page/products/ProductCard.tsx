@@ -1,10 +1,12 @@
-import { Heart, Eye } from "lucide-react";
+import { Heart, Eye, ShoppingCart, X } from "lucide-react";
 import { useState } from "react";
 import Ratings from "../../../ui/Ratings";
 import ColorSelect from "../../../ui/ColorSelect";
 import { type Product } from "../../../../types";
+import { useCartContext } from "../../../../utils/CartContext";
 
 export default function ProductCard({
+  id,
   title,
   price,
   rating,
@@ -23,10 +25,17 @@ export default function ProductCard({
 
   const [productColor, setProductColor] = useState(0);
 
+  const { getItemQuantity, increaseCartQuantity, removeFromCart } =
+    useCartContext();
+  const quantity = getItemQuantity(id);
   return (
-    <div className="w-[270px] group flex-none snap-start">
+    <div className="w-[270px] group flex-none snap-start" id={id.toString()}>
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
-        <div className={`flex ${sales? "justify-between" : "justify-end" } w-full p-3`}>
+        <div
+          className={`flex ${
+            sales ? "justify-between" : "justify-end"
+          } w-full p-3`}
+        >
           {isNew && (
             <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit text-white">
               New
@@ -53,9 +62,21 @@ export default function ProductCard({
           src={image}
           className="absolute inset-0 w-3/5 h-9/12 m-auto object-contain -z-0"
         />
-        <div className="text-white bg-black text-center py-2 group-hover:block md:hidden">
-          Add To Cart
-        </div>
+        {quantity === 0 ? (
+          <button
+            onClick={() => increaseCartQuantity(id)}
+            className="text-white bg-black text-center py-2 group-hover:block md:hidden border-none cursor-pointer"
+          >
+            Add to Cart
+          </button>
+        ) : (
+          <button
+            onClick={() => removeFromCart(id)}
+            className="text-white bg-primary text-center py-2 flex justify-center border-none cursor-pointer"
+          >
+            Remove <ShoppingCart /> <X />
+          </button>
+        )}
       </div>
 
       <div className="mt-4">
