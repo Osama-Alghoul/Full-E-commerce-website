@@ -6,6 +6,7 @@ import SignUp from "./components/pages/sign-up/signUp";
 import Cart from "./components/pages/cart/cart";
 import CheckOut from "./components/pages/checkout/checkout";
 import ProductDetails from "./components/pages/product-details/ProductDetails";
+import About from "./components/pages/about/about";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "gaming",
         children: [{ path: "product-name", Component: ProductDetails }],
+      },
+      {
+        path: "about",
+        children: [{ index: true, Component: About }],
       },
     ],
   },
