@@ -17,7 +17,7 @@ export default function Badges() {
     },
   ];
   return (
-    <div className="flex justify-between flex-wrap ">
+    <div className="flex flex-col md:flex-row gap-10 justify-center items-center flex-wrap md:pb-36 pb-16">
       {data.map((item, index) => (
         <div
           key={index}

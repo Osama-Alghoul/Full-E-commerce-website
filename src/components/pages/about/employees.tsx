@@ -1,4 +1,5 @@
 import EemployeeCard from "../../ui/employeeCard";
+import ScrollContainer from "../../ui/SmoothScrollContainer";
 
 export default function Employees() {
   const employees = [
@@ -18,9 +19,7 @@ export default function Employees() {
     { name: "Will Smith", postion: "Product Designer", img: "/Will.png" },
   ];
   return (
-    <div
-      className="flex gap-8 overflow-x-scroll justify-center snap-x snap-mandatory"
-      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+    <ScrollContainer
     >
       {employees.map((employee, index) => (
         <EemployeeCard
@@ -30,6 +29,6 @@ export default function Employees() {
           position={employee.postion}
         />
       ))}
-    </div>
+    </ScrollContainer>
   );
 }
