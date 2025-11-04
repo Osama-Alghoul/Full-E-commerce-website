@@ -36,7 +36,7 @@ export default function Cart() {
           </form>
           <div className="border rounded-sm px-6 py-8 w-[470px]">
             <div className="font-medium text-xl">Cart Total</div>
-            <CartBill subTotal={100} />
+            <CartBill />
             <Link to={"/cart/checkout"} className="m-auto">
               <Button>Procees to checkout</Button>
             </Link>
