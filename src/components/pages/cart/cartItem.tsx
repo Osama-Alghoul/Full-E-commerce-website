@@ -64,7 +64,7 @@ export default function CartItem({ itemId, quantity }: props) {
       key={product.id}
       className="flex justify-between items-center bg-white border-b border-gray-100 py-6"
     >
-      <td className="flex-1 flex items-center gap-4 min-w-0 pl-4">
+      <td className="flex-1 flex items-center flex-wrap gap-4 min-w-0 pl-4">
         <div className="relative">
           <span
             className="absolute -top-3 -left-3 text-red-500 text-lg cursor-pointer"

@@ -25,7 +25,7 @@ export default function Cart() {
           </Link>
         </div>
         <div className="flex justify-between items-start pt-20 flex-wrap">
-          <form className="flex gap-4 flex-wrap">
+          <form className="flex gap-4 flex-wrap mb-4">
             <input
               type="text"
               required

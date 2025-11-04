@@ -1,5 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
 import type { CartProviderProps, CartContextProps, CartItem } from "../types";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const CartContext = createContext({} as CartContextProps);
 
@@ -8,7 +9,8 @@ export function useCartContext() {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useLocalStorage<CartItem[]>("shopping cart" ,[]);
+  // const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const cartQuantity = cart.reduce(
     (quantity, item) => item.quantity + quantity,

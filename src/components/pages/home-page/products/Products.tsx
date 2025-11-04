@@ -1,4 +1,5 @@
 import SectionTitle from "../../../ui/SectionTitle";
+import ProductCardLoading from "../../../ui/productLoading";
 import ProductCard from "./ProductCard";
 import Button from "../../../ui/Button";
 import { useEffect, useState } from "react";
@@ -6,17 +7,21 @@ import type { Product } from "../../../../types";
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const response = await fetch(`https://fakestoreapi.com/products`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
       if (!response.ok) {
+        setLoading(false);
         throw new Error("Faild to fetch products");
       }
       const data = await response.json();
       setProducts(data);
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -27,9 +32,13 @@ export default function Products() {
           <SectionTitle title="Our Products" bigTitle="Explore Our Products" />
         </div>
         <div className="flex gap-[30px] flex-wrap justify-center">
-          {products.slice(0, 8).map((product) => {
-            return <ProductCard key={product.id} {...product} />;
-          })}
+          {loading ? (
+            <ProductCardLoading />
+          ) : (
+            products
+              .slice(0, 8)
+              .map((product) => <ProductCard key={product.id} {...product} />)
+          )}
         </div>
       </div>
       <Button>View All Products</Button>

@@ -1,9 +1,70 @@
-export default function CartBill({ subTotal }: { subTotal: number }) {
+import { useState, useEffect, useCallback } from "react";
+import { useCartContext } from "../../../utils/CartContext";
+import { debounce } from "../../../utils/debounce";
+import type { CartItem, Product } from "../../../types";
+
+interface CartContextType {
+  cartItems: CartItem[];
+}
+
+export default function CartBill() {
+  const { cartItems } = useCartContext() as CartContextType;
+  const [subTotal, setSubTotal] = useState<string>("0.00");
+  const [loading, setLoading] = useState(true);
+
+  const calculateSubtotal = async (items: CartItem[]): Promise<void> => {
+    setLoading(true);
+    const itemPromises = items.map(async (item) => {
+      try {
+        const response = await fetch(
+          `https://fakestoreapi.com/products/${item.id}`
+        );
+        if (!response.ok) {
+          throw new Error(`Failed to fetch product ${item.id}`);
+        }
+        const product: Product = await response.json();
+
+        const itemSubtotal = product.price * item.quantity;
+        setLoading(false);
+        return itemSubtotal;
+      } catch (error) {
+        console.error("Error fetching product price:", error);
+        setLoading(false);
+        return 0;
+      }
+    });
+
+    const subtotals: number[] = await Promise.all(itemPromises);
+
+    const total = subtotals.reduce((acc, sub) => acc + sub, 0);
+
+    setSubTotal(total.toFixed(2));
+  };
+
+  const debouncedCalculate = useCallback(
+    debounce((items: CartItem[]) => {
+      calculateSubtotal(items);
+    }, 500),
+    []
+  );
+
+  useEffect(() => {
+    if (cartItems && cartItems.length > 0) {
+      debouncedCalculate(cartItems);
+    } else {
+      setSubTotal("0.00");
+    }
+  }, [cartItems, debouncedCalculate]);
+
   return (
     <>
       <div className="flex justify-between border-b py-4 border-b-gray-300">
         <span>Subtotal</span>
-        <span>${subTotal}</span>
+        {loading ? (
+          <span className="animate-pulse">Loading...</span>
+        ) : (
+          <span>${subTotal}</span>
+        )}
       </div>
       <div className="flex justify-between border-b py-4 border-b-gray-300">
         <span>Shipping</span>
@@ -11,7 +72,11 @@ export default function CartBill({ subTotal }: { subTotal: number }) {
       </div>
       <div className="flex justify-between py-4">
         <span>Total</span>
-        <span>${subTotal}</span>
+        {loading ? (
+          <span className="animate-pulse">Loading...</span>
+        ) : (
+          <span>${subTotal}</span>
+        )}
       </div>
     </>
   );
