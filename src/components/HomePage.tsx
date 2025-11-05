@@ -5,29 +5,10 @@ import BestSelling from "./pages/home-page/best-selling/BestSelling";
 import Products from "./pages/home-page/products/Products";
 import Featured from "./pages/home-page/featured/Featured";
 import Trusted from "./pages/home-page/trust-badges/Trusted";
-import { useEffect, useState } from "react";
-import type { Product } from "../types";
+import { useProducts } from "../hooks/useProducts";
 
 export default function HomePage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    const fetchData = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
-      if (!response.ok) {
-        setLoading(false);
-        throw new Error("Faild to fetch products");
-      }
-      const data = await response.json();
-      setLoading(false);
-      setProducts(data);
-    };
-    fetchData();
-  }, []);
+  const { products, loading } = useProducts();
   return (
     <div className="max-w-[1170px] m-auto">
       <Hero />

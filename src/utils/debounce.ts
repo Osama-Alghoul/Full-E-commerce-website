@@ -4,7 +4,7 @@ export function debounce<T extends []>(
 ) {
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
-  return function executedFunction(...args: T) {
+  return function executedFunction( ...args: T) {
     const later = () => {
       clearTimeout(timeout!);
       func(...args);

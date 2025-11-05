@@ -4,6 +4,8 @@ import Ratings from "../../../ui/Ratings";
 import ColorSelect from "../../../ui/ColorSelect";
 import { type Product } from "../../../../types";
 import { useCartContext } from "../../../../utils/CartContext";
+import { useFavContext } from "../../../../utils/FavContext";
+import { Link } from "react-router";
 
 export default function ProductCard({
   id,
@@ -27,7 +29,13 @@ export default function ProductCard({
 
   const { getItemQuantity, increaseCartQuantity, removeFromCart } =
     useCartContext();
+  const {
+    increaseCartQuantity: increaseFavQuantity,
+    getItemQuantity: getFavQuantity,
+    removeFromCart: removeFromFav,
+  } = useFavContext();
   const quantity = getItemQuantity(id);
+  const isFav = getFavQuantity(id) > 0;
   return (
     <div className="w-[270px] group flex-none snap-start" id={id.toString()}>
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
@@ -53,8 +61,21 @@ export default function ProductCard({
           )}
 
           <div>
-            <Heart className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white" />
-            <Eye className="bg-white w-8 h-8 p-1 rounded-full hover:bg-primary hover:text-white" />
+            {isFav ? (
+              <Heart
+                className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white"
+                onClick={() => removeFromFav(id)}
+                fill="#DB4444"
+              />
+            ) : (
+              <Heart
+                className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white"
+                onClick={() => increaseFavQuantity(id)}
+              />
+            )}
+            <Link to={`/products/${id}`}>
+              <Eye className="bg-white w-8 h-8 p-1 rounded-full hover:bg-primary hover:text-white" />
+            </Link>
           </div>
         </div>
 
@@ -79,29 +100,33 @@ export default function ProductCard({
         )}
       </div>
 
-      <div className="mt-4">
-        <div className="font-medium">{title}</div>
-        <div className="font-medium flex items-center gap-3">
-          <span className={"text-primary"}>${displayedPrice.toFixed(2)}</span>
-          {sales && sales > 0 && (
-            <span className="line-through opacity-50">${price.toFixed(2)}</span>
-          )}
-        </div>
+      <Link to={`/products/${id}`}>
+        <div className="mt-4">
+          <div className="font-medium">{title}</div>
+          <div className="font-medium flex items-center gap-3">
+            <span className={"text-primary"}>${displayedPrice.toFixed(2)}</span>
+            {sales && sales > 0 && (
+              <span className="line-through opacity-50">
+                ${price.toFixed(2)}
+              </span>
+            )}
+          </div>
 
-        <Ratings stars={rating.rate} reviewCount={rating.count} />
-        {colors?.length !== 0 &&
-          colors?.map((color, index) => {
-            return (
-              <ColorSelect
-                key={index}
-                color={color}
-                index={index}
-                setProductColor={setProductColor}
-                productColor={productColor}
-              />
-            );
-          })}
-      </div>
+          <Ratings stars={rating.rate} reviewCount={rating.count} />
+          {colors?.length !== 0 &&
+            colors?.map((color, index) => {
+              return (
+                <ColorSelect
+                  key={index}
+                  color={color}
+                  index={index}
+                  setProductColor={setProductColor}
+                  productColor={productColor}
+                />
+              );
+            })}
+        </div>
+      </Link>
     </div>
   );
 }

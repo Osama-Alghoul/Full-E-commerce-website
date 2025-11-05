@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCartContext } from "../../../utils/CartContext";
+import { Link } from "react-router";
 
 interface Product {
   id: number;
@@ -76,7 +77,9 @@ export default function CartItem({ itemId, quantity }: props) {
             <img src={product.image} alt={product.title} />
           </div>
         </div>
-        <span className="font-medium text-sm">{product.title}</span>
+        <Link to={`/products/${product.id}`}>
+          <span className="font-medium text-sm">{product.title}</span>
+        </Link>
       </td>
 
       <td className="w-1/5 text-left text-sm">${product.price.toFixed(2)}</td>

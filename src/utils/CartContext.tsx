@@ -10,7 +10,6 @@ export function useCartContext() {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useLocalStorage<CartItem[]>("shopping cart" ,[]);
-  // const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   const cartQuantity = cart.reduce(
     (quantity, item) => item.quantity + quantity,
@@ -59,6 +58,10 @@ export function CartProvider({ children }: CartProviderProps) {
     });
   }
 
+  function moveAllToCart([...items]: CartItem[]) {
+    setCart(items);
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -66,6 +69,7 @@ export function CartProvider({ children }: CartProviderProps) {
         increaseCartQuantity,
         decreaseCartQuantity,
         removeFromCart,
+        moveAllToCart,
         cartQuantity,
         cartItems: cart,
       }}

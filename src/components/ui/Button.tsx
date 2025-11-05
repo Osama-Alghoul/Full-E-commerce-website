@@ -5,12 +5,14 @@ export default function Button({
   variant = "primary",
   type,
   noPadding = false,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
   variant?: "primary" | "green" | "outline";
   type?: "button" | "submit" | "reset";
   noPadding?: boolean;
+  onClick?: () => void;
 }) {
   let variantClass = "";
 
@@ -29,6 +31,7 @@ export default function Button({
     <button
       className={`${variantClass} ${noPadding ? "px-4" : "px-10 md:px-12"} py-4 rounded-sm  ${className} cursor-pointer`}
       type={type}
+      onClick={onClick}
     >
       {children}
     </button>

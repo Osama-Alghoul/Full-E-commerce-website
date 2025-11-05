@@ -2,7 +2,9 @@ import Breadcrumbs from "../../ui/BreadCrumb";
 import Button from "../../ui/Button";
 import CartBill from "../cart/cartBill";
 import Input from "./checkOutInputs";
-import { useState } from "react";
+import {  useState } from "react";
+import Item from "./Item";
+import { useCartContext } from "../../../utils/CartContext";
 
 interface FormData {
   name: string;
@@ -24,15 +26,7 @@ export default function CheckOut() {
     phone: "",
     email: "",
   });
-
-  const mockData = [
-    {
-      img: "",
-      name: "LCD Monitor",
-      price: 650,
-    },
-    { img: "", name: "H1 Gamepad", price: 650 },
-  ];
+  const { cartItems } = useCartContext();
 
   return (
     <section className="px-6 lg:px-32 m-auto pb-36">
@@ -128,19 +122,11 @@ export default function CheckOut() {
         </div>
         <div className="flex flex-col gap-8">
           <div>
-            {mockData.map((prod) => {
-              return (
-                <div className="flex justify-between">
-                  <div>
-                    <img src={prod.img} alt="" />
-                    <div>{prod.name}</div>
-                  </div>
-                  <div>${prod.price}</div>
-                </div>
-              );
-            })}
+            {cartItems.map((prod) => (
+              <Item key={prod.id} itemId={prod.id} />
+            ))}
           </div>
-          <CartBill subTotal={1750} /> {/* TODO : Implement */}
+          <CartBill />
           <div>
             <div className="flex justify-between">
               <div className="flex gap-4 items-center">

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { NavLinks } from "../../../content";
 import SlideInDrawer from "../../ui/SlideDrawer";
 import { useCartContext } from "../../../utils/CartContext";
+import { useFavContext } from "../../../utils/FavContext";
 
 interface HeaderProps {
   type?: "guest" | "user";
@@ -39,7 +40,8 @@ const PageLinks = ({
 
 export default function Header({ type = "guest" }: HeaderProps) {
   const location = useLocation();
-  const {cartQuantity} = useCartContext();
+  const { cartQuantity } = useCartContext();
+  const { favItems } = useFavContext();
 
   return (
     <header className="flex justify-between md:pt-10 pt-4 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
@@ -65,8 +67,13 @@ export default function Header({ type = "guest" }: HeaderProps) {
           />
           <Search />
         </div>
-        <div className="hover:bg-primary hover:text-white rounded-full p-2.5">
-          <Heart />
+        <div className="hover:bg-primary hover:text-white rounded-full p-2.5 relative">
+          <Link to="/wishlist">
+            <Heart />
+            <div className="absolute top-0 right-0 bg-primary text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
+              {favItems.length}
+            </div>
+          </Link>
         </div>
         <div className="hover:bg-primary hover:text-white rounded-full p-2.5 relative">
           <Link to={"/cart"}>

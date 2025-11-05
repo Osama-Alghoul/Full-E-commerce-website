@@ -31,8 +31,16 @@ export type CartContextProps = {
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  moveAllToCart: ([...items]: CartItem[]) => void;
   cartQuantity: number;
   cartItems: CartItem[];
+};
+
+export type FavContextProps = {
+  increaseCartQuantity: (id: number) => void;
+  removeFromCart: (id: number) => void;
+  getItemQuantity: (id: number) => number;
+  favItems: CartItem[];
 };
 
 export type CartItem = {

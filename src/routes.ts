@@ -9,6 +9,7 @@ import ProductDetails from "./components/pages/product-details/ProductDetails";
 import About from "./components/pages/about/about";
 import Contact from "./components/pages/contact/contact";
 import NotFound from "./components/pages/not-found/not-found";
+import WishList from "./components/pages/whislist/whishlist";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "gaming",
-        children: [{ path: "product-name", Component: ProductDetails }],
+        path: "products",
+        children: [{ path: ":id", Component: ProductDetails }],
       },
       {
         path: "about",
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         children: [{ index: true, Component: Contact }],
+      },
+      {
+        path: "wishlist",
+        children: [{ index: true, Component: WishList }],
       },
       {
         path: "*",
