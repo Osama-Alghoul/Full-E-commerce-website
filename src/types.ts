@@ -39,3 +39,8 @@ export type CartItem = {
   id: number;
   quantity: number;
 };
+
+export interface apiProps {
+  products: Product[];
+  loading: boolean;
+}

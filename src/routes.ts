@@ -7,6 +7,8 @@ import Cart from "./components/pages/cart/cart";
 import CheckOut from "./components/pages/checkout/checkout";
 import ProductDetails from "./components/pages/product-details/ProductDetails";
 import About from "./components/pages/about/about";
+import Contact from "./components/pages/contact/contact";
+import NotFound from "./components/pages/not-found/not-found";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "about",
         children: [{ index: true, Component: About }],
+      },
+      {
+        path: "contact",
+        children: [{ index: true, Component: Contact }],
+      },
+      {
+        path: "*",
+        Component: NotFound,
       },
     ],
   },
