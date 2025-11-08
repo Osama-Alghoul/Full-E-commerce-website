@@ -9,7 +9,7 @@ export default function Button({
 }: {
   children: ReactNode;
   className?: string;
-  variant?: "primary" | "green" | "outline";
+  variant?: "primary" | "green" | "outline" | "shadow";
   type?: "button" | "submit" | "reset";
   noPadding?: boolean;
   onClick?: () => void;
@@ -22,6 +22,9 @@ export default function Button({
       break;
     case "outline":
       variantClass = "border border-gray-400";
+      break;
+    case "shadow":
+      variantClass = "border-none";
       break;
     default:
       variantClass = "bg-primary text-white";

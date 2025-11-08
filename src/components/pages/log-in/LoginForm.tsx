@@ -20,7 +20,7 @@ export default function LoginForm() {
       return;
     }
 
-    // This is a placeholder for your actual authentication logic (e.g., calling an API)
+    // This is a placeholder for an actual authentication logic (e.g., calling an API)
     const isLoginSuccessful = true;
 
     if (isLoginSuccessful) {
@@ -28,9 +28,6 @@ export default function LoginForm() {
 
       toast.success(`Welcome back, ${username}!`);
 
-      // setTimeout(() => {
-      //   navigate(-1);
-      // }, 500);
     } else {
       toast.error("Login failed. Check your credentials and try again.");
     }

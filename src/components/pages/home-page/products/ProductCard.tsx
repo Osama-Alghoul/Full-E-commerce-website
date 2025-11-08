@@ -65,7 +65,7 @@ export default function ProductCard({
               <Heart
                 className="bg-white w-8 h-8 p-1 rounded-full mb-2 hover:bg-primary hover:text-white"
                 onClick={() => removeFromFav(id)}
-                fill="#DB4444"
+                fill="red"
               />
             ) : (
               <Heart

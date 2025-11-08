@@ -42,6 +42,10 @@ export function CartProvider({ children }: CartProviderProps) {
     });
   }
 
+  function cleanCart() {
+    setCart([]);
+  }
+
   function decreaseCartQuantity(id: number) {
     setCart((currentItems) => {
       if (currentItems.find((item) => item.id === id)?.quantity === 1) {
@@ -70,6 +74,7 @@ export function CartProvider({ children }: CartProviderProps) {
         decreaseCartQuantity,
         removeFromCart,
         moveAllToCart,
+        cleanCart,
         cartQuantity,
         cartItems: cart,
       }}

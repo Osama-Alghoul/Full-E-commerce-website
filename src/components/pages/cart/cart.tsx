@@ -38,16 +38,7 @@ export default function Cart() {
                   <Button variant="outline">Upgrade Cart</Button>
                 </Link>
               </div>
-              <div className="flex justify-between items-start pt-20 flex-wrap">
-                <form className="flex gap-4 flex-wrap mb-4">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Coupon Code"
-                    className="border rounded-sm py-4 px-6"
-                  />
-                  <Button type="submit">Apply Coupon</Button>
-                </form>
+              <div className="flex justify-end pt-20">
                 <div className="border rounded-sm px-6 py-8 w-[470px]">
                   <div className="font-medium text-xl">Cart Total</div>
                   <CartBill />
