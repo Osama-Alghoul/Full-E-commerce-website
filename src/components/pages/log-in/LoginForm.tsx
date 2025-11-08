@@ -1,12 +1,10 @@
 import { Link } from "react-router";
 import { type FormEvent } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import toast, { Toaster } from "react-hot-toast";
 import { useAuthContext } from "../../../utils/AuthContext";
 
 export default function LoginForm() {
-  const navigate = useNavigate();
   const { getUserData } = useAuthContext();
 
   const handelSubmit = async (e: FormEvent<HTMLFormElement>) => {

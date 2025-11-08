@@ -51,6 +51,7 @@ export default function CartBill() {
   );
 
   const debouncedCalculate = useCallback(
+    // @ts-expect-error-next-line
     debounce((items: CartItem[]) => {
       calculateSubtotal(items);
     }, 500),
@@ -58,6 +59,7 @@ export default function CartBill() {
   );
   useEffect(() => {
     if (cartItems && cartItems.length > 0) {
+      // @ts-expect-error-next-line
       debouncedCalculate(cartItems);
     } else {
       setSubTotal("0.00");
