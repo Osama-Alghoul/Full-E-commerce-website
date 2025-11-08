@@ -1,8 +1,17 @@
 import { Link } from "react-router";
 import Button from "../../ui/Button";
 import SginUpForm from "./sginUpForm";
+import HomePage from "../../HomePage";
+import { useAuthContext } from "../../../utils/AuthContext";
 
 export default function SignUp() {
+
+  const { isLoggedIn } = useAuthContext();
+  
+    if (isLoggedIn) {
+      return <HomePage />;
+    }
+
   return (
     <section className="flex justify-between mt-14 mb-36 flex-wrap">
       <img src="/AuthImage.png" className="hidden xl:block" />

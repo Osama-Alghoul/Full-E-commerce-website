@@ -4,6 +4,8 @@ import { NavLinks } from "../../../content";
 import SlideInDrawer from "../../ui/SlideDrawer";
 import { useCartContext } from "../../../utils/CartContext";
 import { useFavContext } from "../../../utils/FavContext";
+import { useAuthContext } from "../../../utils/AuthContext";
+import UserMenu from "./userMenu";
 
 interface HeaderProps {
   type?: "guest" | "user";
@@ -16,9 +18,12 @@ const PageLinks = ({
   hidden: boolean;
   location: ReturnType<typeof useLocation>;
 }) => {
+  const { isLoggedIn } = useAuthContext();
   return (
     <ul className={`gap-12 list-none ${hidden ? "hidden md:flex" : ""} `}>
-      {NavLinks.map((route) => {
+      {NavLinks.filter(
+        isLoggedIn ? (link) => link.label !== "Sign up" : (link) => link
+      ).map((route) => {
         return (
           <li key={route.label}>
             <Link
@@ -42,6 +47,7 @@ export default function Header({ type = "guest" }: HeaderProps) {
   const location = useLocation();
   const { cartQuantity } = useCartContext();
   const { favItems } = useFavContext();
+  const { isLoggedIn } = useAuthContext();
 
   return (
     <header className="flex justify-between md:pt-10 pt-4 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap">
@@ -83,6 +89,7 @@ export default function Header({ type = "guest" }: HeaderProps) {
             </div>
           </Link>
         </div>
+        {isLoggedIn && <UserMenu />}
         {type === "user" && (
           <div>
             <User2Icon />

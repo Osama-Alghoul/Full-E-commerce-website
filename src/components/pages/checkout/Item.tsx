@@ -35,13 +35,12 @@ export default function Item({ itemId }: { itemId: number }) {
   if (loading) return <div className="animate-pulse">Loading...</div>;
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between items-center md:text-base text-sm">
       <div className="flex items-center gap-4">
-        <img src={product?.image} alt={product?.title} className="size-10" />
-        <div>{product?.title}</div>
-        <div>({quantity})</div>
+        <img src={product?.image} alt={product?.title} className="md:size-10 size-7" />
+        <div>{product?.title} <span className="text-primary">({quantity})</span></div>
       </div>
-      <div>${product?.price}</div>
+      <div className="text-primary">${product?.price}</div>
     </div>
   );
 }

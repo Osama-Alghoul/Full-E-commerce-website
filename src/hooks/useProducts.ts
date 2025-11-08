@@ -20,10 +20,9 @@ export function useProducts() {
 
         const data = await response.json();
         setProducts(data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchData();

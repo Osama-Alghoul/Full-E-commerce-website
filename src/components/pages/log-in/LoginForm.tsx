@@ -1,9 +1,14 @@
-import { Link, redirect } from "react-router";
+import { Link } from "react-router";
+import { type FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
-import { useState, type FormEvent } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { useAuthContext } from "../../../utils/AuthContext";
 
 export default function LoginForm() {
-  const [failuire, setFailuire] = useState(false);
+  const navigate = useNavigate();
+  const { getUserData } = useAuthContext();
+
   const handelSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -11,45 +16,51 @@ export default function LoginForm() {
 
     const username = formData.get("username");
     const password = formData.get("password");
+
     if (!username || !password) {
-      setFailuire(true);
+      toast.error("Please enter both username and password.");
       return;
     }
 
-    const response = await fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    });
+    // This is a placeholder for your actual authentication logic (e.g., calling an API)
+    const isLoginSuccessful = true;
 
-    if (!response.ok) {
-      setFailuire(true);
-      console.error("Login failed:", response.status);
+    if (isLoginSuccessful) {
+      getUserData({ data: { username: username as string } });
+
+      toast.success(`Welcome back, ${username}!`);
+
+      // setTimeout(() => {
+      //   navigate(-1);
+      // }, 500);
     } else {
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      redirect("/");
+      toast.error("Login failed. Check your credentials and try again.");
     }
   };
 
   return (
-    <form
-      onSubmit={handelSubmit}
-      className="flex flex-col gap-10 mb-4 [&>input]:border-b [&>input]:border-b-gray-400 text-sm md:text-base"
-    >
-      <input type="text" placeholder="Username" name="username" required />
-      <input type="password" placeholder="Password" name="password" required />
-      {failuire && (
-        <p className="text-red-400 font-semibold">
-          Failed to login, try again!
-        </p>
-      )}
-      <div className="flex justify-between items-center gap-2.5">
-        <Button type="submit">login</Button>
-        <Link to={"/auth/login/#"} className="text-primary">
-          Forget Password?
-        </Link>
-      </div>
-    </form>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+
+      <form
+        onSubmit={handelSubmit}
+        className="flex flex-col gap-10 mb-4 [&>input]:border-b [&>input]:border-b-gray-400 text-sm md:text-base"
+      >
+        <input type="text" placeholder="Username" name="username" required />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          required
+        />
+
+        <div className="flex justify-between items-center gap-2.5">
+          <Button type="submit">login</Button>
+          <Link to={"/auth/login/#"} className="text-primary">
+            Forget Password?
+          </Link>
+        </div>
+      </form>
+    </>
   );
 }

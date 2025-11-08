@@ -12,48 +12,56 @@ export default function CartBill() {
   const [subTotal, setSubTotal] = useState<string>("0.00");
   const [loading, setLoading] = useState(true);
 
-  const calculateSubtotal = async (items: CartItem[]): Promise<void> => {
-    setLoading(true);
-    const itemPromises = items.map(async (item) => {
-      try {
-        const response = await fetch(
-          `https://fakestoreapi.com/products/${item.id}`
-        );
-        if (!response.ok) {
-          throw new Error(`Failed to fetch product ${item.id}`);
-        }
-        const product: Product = await response.json();
+  const calculateSubtotal = useCallback(
+    async (items: CartItem[]): Promise<void> => {
+      setLoading(true);
 
-        const itemSubtotal = product.price * item.quantity;
+      if (!items || items.length === 0) {
+        setSubTotal("0.00");
         setLoading(false);
-        return itemSubtotal;
-      } catch (error) {
-        console.error("Error fetching product price:", error);
-        setLoading(false);
-        return 0;
+        return;
       }
-    });
 
-    const subtotals: number[] = await Promise.all(itemPromises);
+      const itemPromises = items.map(async (item) => {
+        try {
+          const response = await fetch(
+            `https://fakestoreapi.com/products/${item.id}`
+          );
+          if (!response.ok) {
+            throw new Error(`Failed to fetch product ${item.id}`);
+          }
+          const product: Product = await response.json();
 
-    const total = subtotals.reduce((acc, sub) => acc + sub, 0);
+          const itemSubtotal = product.price * item.quantity;
+          return itemSubtotal;
+        } catch (error) {
+          console.error("Error fetching product price:", error);
+          return 0;
+        }
+      });
 
-    setSubTotal(total.toFixed(2));
-  };
+      const subtotals: number[] = await Promise.all(itemPromises);
 
-  const debouncedCalculate = useCallback(
-    // @ts-expect-error-next-line
-    debounce((items: CartItem[], ) => {
-      calculateSubtotal(items);
-    }, 500),
-    []
+      const total = subtotals.reduce((acc, sub) => acc + sub, 0);
+
+      setSubTotal(total.toFixed(2));
+      setLoading(false);
+    },
+    [setSubTotal, setLoading]
   );
 
+  const debouncedCalculate = useCallback(
+    debounce((items: CartItem[]) => {
+      calculateSubtotal(items);
+    }, 500),
+    [calculateSubtotal] 
+  );
   useEffect(() => {
     if (cartItems && cartItems.length > 0) {
-      debouncedCalculate();
+      debouncedCalculate(cartItems);
     } else {
       setSubTotal("0.00");
+      setLoading(false);
     }
   }, [cartItems, debouncedCalculate]);
 

@@ -12,7 +12,7 @@ export default function WishList() {
   const { moveAllToCart } = useCartContext();
   const { products, loading } = useProducts();
   return (
-    <section className="max-w-[1170px] m-auto pt-20 px-4">
+    <section className="max-w-[1170px] m-auto pt-20 md:px-0 px-4">
       <div className="flex justify-between items-center">
         <div>
           Wishlist <span>({favItems.length})</span>

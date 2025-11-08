@@ -52,3 +52,10 @@ export interface apiProps {
   products: Product[];
   loading: boolean;
 }
+
+export interface AuthContextProps {
+  userData: { username: string };
+  getUserData: ({ data }: { data: { username: string } }) => void;
+  isLoggedIn: boolean;
+  logout: () => void;
+}

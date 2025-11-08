@@ -1,6 +1,14 @@
+import { useAuthContext } from "../../../utils/AuthContext";
+import HomePage from "../../HomePage";
 import LoginForm from "./LoginForm";
 
 export default function Login() {
+  const { isLoggedIn } = useAuthContext();
+
+  if (isLoggedIn) {
+    return <HomePage />;
+  }
+
   return (
     <section className="flex justify-betweenm mt-14 mb-36">
       <img src="/AuthImage.png" className="hidden xl:block"/>
