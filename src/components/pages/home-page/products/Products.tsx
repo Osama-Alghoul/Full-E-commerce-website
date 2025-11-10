@@ -2,10 +2,10 @@ import SectionTitle from "../../../ui/SectionTitle";
 import ProductCardLoading from "../../../ui/productLoading";
 import ProductCard from "./ProductCard";
 import Button from "../../../ui/Button";
-import type { apiProps as Props } from "../../../../types";
+import { useProducts } from "../../../../hooks/useProducts";
 
-export default function Products({ products, loading }: Props) {
-  
+export default function Products() {
+  const { loading, products } = useProducts({ limit: 8, skip: 0 });
   return (
     <section className="pt-[60px] pb-36 flex flex-col gap-[60px] items-center px-5 lg:px-0">
       <div>
