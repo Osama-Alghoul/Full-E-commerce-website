@@ -1,6 +1,17 @@
+import { Link } from "react-router";
 import Carousel from "./Carousel";
 
-function IPhoneSlide({ title1, title2 }: { title1?: string; title2?: string }) {
+function IPhoneSlide({
+  title1,
+  title2,
+  src,
+  id,
+}: {
+  title1?: string;
+  title2?: string;
+  src: string;
+  id: number;
+}) {
   return (
     <div className="flex  items-center justify-between w-full p-7 md:p-12 relative">
       {/* Text Section (Left) */}
@@ -10,16 +21,16 @@ function IPhoneSlide({ title1, title2 }: { title1?: string; title2?: string }) {
           <span className="text-3xl font-bold">
             <img src="/apple-logo.svg" alt="apple logo" className="w-8 h-8" />
           </span>
-          <span className="md:text-lg">iPhone 14 Series</span>
+          <span className="md:text-lg">Exclusive apple collection</span>
         </div>
         <h1 className="text-2xl lg:text-7xl md:text-5xl font-bold leading-tight">
-          {title1 || "Up to 10%"} 
+          {title1 || "Up to 10%"}
           <br />
           {title2 || "off Voucher"}
         </h1>
         {/* Shop Now button */}
-        <a
-          href="#"
+        <Link
+          to={`/products/${id}`}
           className="inline-flex items-center md:mt-6 text-lg border-b border-white hover:text-red-400 transition duration-300"
         >
           Shop Now
@@ -37,14 +48,16 @@ function IPhoneSlide({ title1, title2 }: { title1?: string; title2?: string }) {
               d="M17 8l4 4m0 0l-4 4m4-4H3"
             ></path>
           </svg>
-        </a>
+        </Link>
       </div>
 
       {/* Image Section (Right) - Replace with actual image */}
       <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60 md:opacity-100 flex items-center justify-end md:pr-8">
-        <div className="w-[400px] h-[400px] rounded-[4rem] flex items-center justify-center">
-          <img src="/iPhone.png" />
-        </div>
+        <Link to={`/products/${id}`}>
+          <div className="w-[350px] h-[350px] rounded-[4rem] flex items-center justify-center">
+            <img src={src} />
+          </div>
+        </Link>
       </div>
     </div>
   );
@@ -54,9 +67,15 @@ export default function CarouselSlides() {
   return (
     <Carousel
       slides={[
-        <IPhoneSlide key="s1" />,
-        <IPhoneSlide key="s2" title2="and more" />,
-        <IPhoneSlide key="s3" title1="Special Offer" title2="off Voucher" />,
+        <IPhoneSlide key="s1" src="/iPhone.png" id={123} />,
+        <IPhoneSlide key="s2" title2="and more" src="/airpods.png" id={100} />,
+        <IPhoneSlide
+          key="s3"
+          title1="Special Offer"
+          title2="off Voucher"
+          src="/charger.png"
+          id={104}
+        />,
       ]}
       autoPlayInterval={5000} // Autoplay every 5 seconds
     />
