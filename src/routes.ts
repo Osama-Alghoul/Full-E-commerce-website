@@ -12,16 +12,14 @@ import NotFound from "./components/pages/not-found/not-found";
 import WishList from "./components/pages/whislist/whishlist";
 import Account from "./components/pages/account/account";
 import PaymentStatus from "./components/pages/paymentStatus/paymentStatus";
+import ProductsPage from "./components/pages/products/products-content";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Layout,
     children: [
-      {
-        index: true,
-        Component: HomePage,
-      },
+      { index: true, Component: HomePage },
       {
         path: "auth",
         children: [
@@ -43,25 +41,16 @@ const router = createBrowserRouter([
       { path: "status", Component: PaymentStatus },
       {
         path: "products",
-        children: [{ path: ":id", Component: ProductDetails }],
+        children: [
+          { index: true, Component: ProductsPage },
+          { path: ":id", Component: ProductDetails },
+        ],
       },
-      {
-        path: "about",
-        Component: About,
-      },
-      {
-        path: "contact",
-        Component: Contact,
-      },
-      {
-        path: "wishlist",
-        Component: WishList,
-      },
+      { path: "about", Component: About },
+      { path: "contact", Component: Contact },
+      { path: "wishlist", Component: WishList },
       { path: "account", Component: Account },
-      {
-        path: "*",
-        Component: NotFound,
-      },
+      { path: "*", Component: NotFound },
     ],
   },
 ]);
