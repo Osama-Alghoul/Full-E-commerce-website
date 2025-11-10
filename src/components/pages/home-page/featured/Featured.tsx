@@ -11,7 +11,7 @@ export default function Featured() {
             <div className="group relative overflow-hidden rounded-lg bg-black md:row-span-2">
               <div className="relative h-[400px] md:h-full px-3.5 pt-3.5">
                 <img
-                  src="/playstaion.png"
+                  src="/playstation.png"
                   alt="PlayStation 5"
                   className="object-cover h-full w-full"
                   loading="lazy"
