@@ -3,6 +3,7 @@ import ProductCard from "../home-page/products/ProductCard";
 import type { Product } from "../../../types";
 import ProductCardLoading from "../../ui/productLoading";
 import { useFavContext } from "../../../utils/FavContext";
+import { BASE_API_URL } from "../../../content";
 
 export default function Item({ itemId }: { itemId: number }) {
   const [product, setProduct] = useState<Product>();
@@ -12,7 +13,7 @@ export default function Item({ itemId }: { itemId: number }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://fakestoreapi.com/products/${itemId}`,
+          `${BASE_API_URL}/products/${itemId}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },

@@ -1,13 +1,8 @@
 import { useState, useEffect } from "react";
 import { useCartContext } from "../../../utils/CartContext";
 import { Link } from "react-router";
-
-interface Product {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-}
+import { BASE_API_URL } from "../../../content";
+import type { Product } from "../../../types";
 
 interface props {
   itemId: number;
@@ -24,7 +19,7 @@ export default function CartItem({ itemId, quantity }: props) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://fakestoreapi.com/products/${itemId}`,
+          `${BASE_API_URL}/products/${itemId}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -74,7 +69,7 @@ export default function CartItem({ itemId, quantity }: props) {
             &times;
           </span>
           <div className="w-12 h-12 flex items-center justify-center">
-            <img src={product.image} alt={product.title} />
+            <img src={product.thumbnail} alt={product.title} />
           </div>
         </div>
         <Link to={`/products/${product.id}`}>

@@ -5,17 +5,15 @@ import BestSelling from "./pages/home-page/best-selling/BestSelling";
 import Products from "./pages/home-page/products/Products";
 import Featured from "./pages/home-page/featured/Featured";
 import Trusted from "./pages/home-page/trust-badges/Trusted";
-import { useProducts } from "../hooks/useProducts";
 
 export default function HomePage() {
-  const { products, loading } = useProducts();
   return (
     <div className="max-w-[1170px] m-auto">
       <Hero />
-      <Sales products={products} loading={loading} />
+      <Sales />
       <Categories />
-      <BestSelling products={products} loading={loading} />
-      <Products products={products} loading={loading} />
+      <BestSelling />
+      <Products />
       <Featured />
       <Trusted />
     </div>

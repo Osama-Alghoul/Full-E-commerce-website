@@ -1,4 +1,3 @@
-import { useProducts } from "../../../hooks/useProducts";
 import { useCartContext } from "../../../utils/CartContext";
 import { useFavContext } from "../../../utils/FavContext";
 import Button from "../../ui/Button";
@@ -6,11 +5,13 @@ import ProductCardLoading from "../../ui/productLoading";
 import SectionTitle from "../../ui/SectionTitle";
 import ProductCard from "../home-page/products/ProductCard";
 import Item from "./Item";
+import { useProducts } from "../../../hooks/useProducts";
 
 export default function WishList() {
   const { favItems } = useFavContext();
   const { moveAllToCart } = useCartContext();
-  const { products, loading } = useProducts();
+  const { loading, products } = useProducts({ limit: 4, skip: 10 });
+
   return (
     <section className="max-w-[1170px] m-auto pt-20 md:px-0 px-4">
       <div className="flex justify-between items-center">
@@ -43,7 +44,6 @@ export default function WishList() {
             </>
           ) : (
             products
-              .slice(0, 4)
               .map((product) => <ProductCard key={product.id} {...product} />)
           )}
         </div>

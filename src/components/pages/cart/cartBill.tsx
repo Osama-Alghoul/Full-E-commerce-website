@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useCartContext } from "../../../utils/CartContext";
 import { debounce } from "../../../utils/debounce";
 import type { CartItem, Product } from "../../../types";
+import { BASE_API_URL } from "../../../content";
 
 interface CartContextType {
   cartItems: CartItem[];
@@ -25,7 +26,7 @@ export default function CartBill() {
       const itemPromises = items.map(async (item) => {
         try {
           const response = await fetch(
-            `https://fakestoreapi.com/products/${item.id}`
+            `${BASE_API_URL}/products/${item.id}`
           );
           if (!response.ok) {
             throw new Error(`Failed to fetch product ${item.id}`);

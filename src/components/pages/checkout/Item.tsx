@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Product } from "../../../types";
 import { useCartContext } from "../../../utils/CartContext";
+import { BASE_API_URL } from "../../../content";
 
 export default function Item({ itemId }: { itemId: number }) {
   const [product, setProduct] = useState<Product>();
@@ -12,7 +13,7 @@ export default function Item({ itemId }: { itemId: number }) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://fakestoreapi.com/products/${itemId}`,
+          `${BASE_API_URL}/products/${itemId}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -37,7 +38,7 @@ export default function Item({ itemId }: { itemId: number }) {
   return (
     <div className="flex justify-between items-center md:text-base text-sm">
       <div className="flex items-center gap-4">
-        <img src={product?.image} alt={product?.title} className="md:size-10 size-7" />
+        <img src={product?.thumbnail} alt={product?.title} className="md:size-10 size-7" />
         <div>{product?.title} <span className="text-primary">({quantity})</span></div>
       </div>
       <div className="text-primary">${product?.price}</div>

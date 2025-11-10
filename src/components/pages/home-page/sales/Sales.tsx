@@ -4,9 +4,10 @@ import Button from "../../../ui/Button";
 import ProductCard from "../products/ProductCard";
 import ScrollContainer from "../../../ui/SmoothScrollContainer";
 import ProductCardLoading from "../../../ui/productLoading";
-import { type apiProps as Props } from "../../../../types";
+import { useProducts } from "../../../../hooks/useProducts";
 
-export default function Sales({ products, loading }: Props) {
+export default function Sales() {
+  const { loading, products } = useProducts({ limit: 4, skip: 30 });
   return (
     <section className="flex flex-col px-5 lg:px-0">
       <div className="flex justify-between items-end flex-wrap">
@@ -25,7 +26,7 @@ export default function Sales({ products, loading }: Props) {
           </>
         ) : (
           products.map((product) => {
-            return <ProductCard key={product.id} {...product} sales={20} />;
+            return <ProductCard key={product.id} {...product} />;
           })
         )}
       </ScrollContainer>

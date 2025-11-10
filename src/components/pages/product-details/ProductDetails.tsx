@@ -10,41 +10,34 @@ import { ArrowLeftRightIcon, Check, Heart, Truck } from "lucide-react";
 import type { Product } from "../../../types";
 import { useParams } from "react-router";
 import { useCartContext } from "../../../utils/CartContext";
+import { BASE_API_URL } from "../../../content";
+import { useFavContext } from "../../../utils/FavContext";
+import Loading from "./loading";
 
 export default function ProductDetails() {
   const [productColor, setProductColor] = useState(0);
   const [product, setProduct] = useState<Product>();
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const param = useParams();
 
   const { getItemQuantity, increaseCartQuantity } = useCartContext();
   const quantity = getItemQuantity(Number(param.id));
+  const {
+    removeFromCart,
+    increaseCartQuantity: increaseFavQuantity,
+    getItemQuantity: getFavQuantity,
+  } = useFavContext();
+  const isFav = getFavQuantity(Number(param.id)) > 0;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      const response = await fetch(
-        `https://fakestoreapi.com/products/${param.id}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Faild to fetch products");
-      }
-      const data = await response.json();
-      setProduct(data);
-    };
-    fetchData();
-  }, [param.id]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(`https://fakestoreapi.com/products`, {
+      const response = await fetch(`${BASE_API_URL}/products/${param.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });
@@ -52,17 +45,36 @@ export default function ProductDetails() {
         throw new Error("Faild to fetch products");
       }
       const data = await response.json();
-      setProducts(data);
+      setProduct(data);
+      setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [param.id]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`${BASE_API_URL}/products/category/${product?.category}?limit=4`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) {
+        throw new Error("Faild to fetch products");
+      }
+      const data = await response.json();
+      setProducts(data.products);
+    };
+    fetchData();
+  }, [product?.category]);
+
+  if(loading) return <Loading />
+
   return (
     <>
       <Breadcrumbs
         items={[
           { label: "Home", path: "/" },
           { label: "Products", path: "/products" },
-          { label: "", path: "/products/" }, // TODO : product-name -> dynamic real name
+          { label: `${product?.title}`, path: `/products/${param.id}` },
         ]}
       />
 
@@ -73,8 +85,8 @@ export default function ProductDetails() {
               <div className="flex-3/4">
                 <div className="md:w-[500px] w-full h-full bg-secondary flex justify-center items-center">
                   <img
-                    src={`${product?.image}`}
-                    alt="joystick"
+                    src={`${product?.images[0]}`}
+                    alt={product?.title}
                     className="w-full"
                   />
                 </div>
@@ -86,11 +98,15 @@ export default function ProductDetails() {
               </h2>
               <div className="flex gap-4">
                 <Ratings
-                  stars={product?.rating.rate || 0}
-                  reviewCount={product?.rating.count || 0}
+                  stars={product?.rating || 0}
+                  reviewCount={product?.reviews.length || 0}
                 />
                 <span className="opacity-50">|</span>
-                <span className="text-green-400">inStock</span>
+                {typeof product?.stock === "number" && product?.stock > 0 ? (
+                  <span className="text-green-400">inStock</span>
+                ) : (
+                  <span className="text-red-400">outOfStock</span>
+                )}
               </div>
               <div className="md:text-2xl text-xl">${product?.price}</div>
               <div className="text-sm">{product?.description}</div>
@@ -123,16 +139,33 @@ export default function ProductDetails() {
               </div>
               <div className="flex gap-4">
                 {quantity === 0 ? (
-                <Button onClick={() => increaseCartQuantity(Number(param.id))}>Buy Now</Button>  
+                  <Button
+                    onClick={() => increaseCartQuantity(Number(param.id))}
+                  >
+                    Buy Now
+                  </Button>
                 ) : (
                   <Button variant="outline" className="flex gap-4">
                     <Check className="mr-2" /> Added to Cart
                   </Button>
                 )}
-                
-                <Button variant="outline" noPadding={true}>
-                  <Heart className="hover:text-primary" />
-                </Button>
+                {isFav ? (
+                  <Button
+                    variant="outline"
+                    noPadding={true}
+                    onClick={() => removeFromCart(Number(param.id))}
+                  >
+                    <Heart className="hover:text-primary" fill="red" />
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    noPadding={true}
+                    onClick={() => increaseFavQuantity(Number(param.id))}
+                  >
+                    <Heart className="hover:text-primary" />
+                  </Button>
+                )}
               </div>
               <div className="rounded-sm border border-gray-400">
                 <div className="flex gap-4 items-center p-4">
@@ -165,7 +198,7 @@ export default function ProductDetails() {
         <div>
           <SectionTitle title="Related Item" />
           <div className="flex justify-around pt-12 flex-wrap md:gap-0 gap-6">
-            {products.slice(0, 4).map((product) => {
+            {products.map((product) => {
               return <ProductCard key={product.id} {...product} />;
             })}
           </div>
