@@ -1,7 +1,5 @@
 import { Heart, Eye, ShoppingCart, X } from "lucide-react";
-import { useState } from "react";
 import Ratings from "../../../ui/Ratings";
-import ColorSelect from "../../../ui/ColorSelect";
 import { type Product } from "../../../../types";
 import { useCartContext } from "../../../../utils/CartContext";
 import { useFavContext } from "../../../../utils/FavContext";
@@ -12,20 +10,17 @@ export default function ProductCard({
   title,
   price,
   rating,
-  image,
-  sales,
-  isNew,
-  colors,
+  reviews,
+  thumbnail,
+  discountPercentage,
 }: Product) {
   let displayedPrice = price;
   let discountedPrice;
 
-  if (sales && sales > 0) {
-    discountedPrice = price * (1 - sales / 100);
+  if (discountPercentage && discountPercentage > 0) {
+    discountedPrice = price * (1 + discountPercentage / 100);
     displayedPrice = discountedPrice;
   }
-
-  const [productColor, setProductColor] = useState(0);
 
   const { getItemQuantity, increaseCartQuantity, removeFromCart } =
     useCartContext();
@@ -41,22 +36,16 @@ export default function ProductCard({
       <div className="relative h-[250px] bg-secondary rounded-sm flex flex-col justify-between">
         <div
           className={`flex ${
-            sales ? "justify-between" : "justify-end"
+            discountPercentage ? "justify-between" : "justify-end"
           } w-full p-3`}
         >
-          {isNew && (
-            <span className="text-sm bg-[#00FF66] rounded-sm px-3 py-1 h-fit text-white">
-              New
-            </span>
-          )}
-
-          {sales && (
+          {discountPercentage && (
             <span
               className={`text-white bg-primary rounded-sm px-3 py-1 h-fit ${
-                sales !== 0 ? "" : "opacity-0"
+                discountPercentage !== 0 ? "" : "opacity-0"
               }`}
             >
-              -{sales}%
+              -{discountPercentage}%
             </span>
           )}
 
@@ -80,7 +69,7 @@ export default function ProductCard({
         </div>
 
         <img
-          src={image}
+          src={thumbnail}
           className="absolute inset-0 w-3/5 h-9/12 m-auto object-contain -z-0"
         />
         {quantity === 0 ? (
@@ -104,27 +93,15 @@ export default function ProductCard({
         <div className="mt-4">
           <div className="font-medium">{title}</div>
           <div className="font-medium flex items-center gap-3">
-            <span className={"text-primary"}>${displayedPrice.toFixed(2)}</span>
-            {sales && sales > 0 && (
+            <span className={"text-primary"}>${price.toFixed(2)}</span>
+            {discountPercentage && discountPercentage > 0 && (
               <span className="line-through opacity-50">
-                ${price.toFixed(2)}
+                ${displayedPrice.toFixed(2)}
               </span>
             )}
           </div>
 
-          <Ratings stars={rating.rate} reviewCount={rating.count} />
-          {colors?.length !== 0 &&
-            colors?.map((color, index) => {
-              return (
-                <ColorSelect
-                  key={index}
-                  color={color}
-                  index={index}
-                  setProductColor={setProductColor}
-                  productColor={productColor}
-                />
-              );
-            })}
+          <Ratings stars={rating} reviewCount={reviews.length} />
         </div>
       </Link>
     </div>
