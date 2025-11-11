@@ -52,7 +52,7 @@ function IPhoneSlide({
       </div>
 
       {/* Image Section (Right) - Replace with actual image */}
-      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-60 md:opacity-100 flex items-center justify-end md:pr-8">
+      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full opacity-40 md:opacity-100 flex items-center justify-end md:pr-8">
         <Link to={`/products/${id}`}>
           <div className="w-[350px] h-[350px] rounded-[4rem] flex items-center justify-center">
             <img src={src} />
