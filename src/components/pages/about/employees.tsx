@@ -11,12 +11,12 @@ export default function Employees() {
     { name: "Emma Watson", postion: "Managing Director", img: "/Emma.png" },
     { name: "Will Smith", postion: "Product Designer", img: "/Will.png" },
     {
-      name: "Tom Cruise",
+      name: "Mark Smith",
       postion: "Founder & Chairman",
-      img: "/Tom.png",
+      img: "/xpert 1.png",
     },
-    { name: "Emma Watson", postion: "Managing Director", img: "/Emma.png" },
-    { name: "Will Smith", postion: "Product Designer", img: "/Will.png" },
+    { name: "Bob Smith", postion: "Managing Director", img: "/xpert 2.png" },
+    { name: "Tylor Rebecca", postion: "Product Designer", img: "/xpert 3.png" },
   ];
   return (
     <ScrollContainer
