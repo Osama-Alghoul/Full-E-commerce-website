@@ -5,9 +5,13 @@ import Button from "../../ui/Button";
 import CartBill from "./cartBill";
 import { useCartContext } from "../../../utils/CartContext";
 import { ShoppingCart } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Cart() {
   const { cartItems } = useCartContext();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   return (
     <>
       <Breadcrumbs
