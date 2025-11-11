@@ -7,15 +7,13 @@ export default function Hero() {
     <section className="px-5 lg:px-0">
       <BurgerMenu
         links={[
-          { label: "Woman's Fashion", href: "#" },
-          { label: "Men's Fashion", href: "#" },
-          { label: "Electronics", href: "#" },
-          { label: "Home & Lifestyle", href: "#" },
-          { label: "Medicine", href: "#" },
-          { label: "Sports & Outdoor", href: "#" },
-          { label: "Baby's & Toys", href: "#" },
-          { label: "Groceries & Pets", href: "#" },
-          { label: "Health & Beauty", href: "#" },
+          { label: "Woman's Fashion", href: "products?category=womens-dresses" },
+          { label: "Men's Fashion", href: "products?category=mens-shirts" },
+          { label: "Electronics", href: "products?category=mobile-accessories" },
+          { label: "Home & Lifestyle", href: "products?category=home-decoration" },
+          { label: "Sports & Outdoor", href: "/products?category=sports-accessories" },
+          { label: "Groceries", href: "products?category=groceries" },
+          { label: "Beauty", href: "products?category=beauty" },
         ]}
       />
       <div className="flex justify-between gap-8">

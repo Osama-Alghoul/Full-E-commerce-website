@@ -1,4 +1,3 @@
-import { Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
 
@@ -16,17 +15,17 @@ export default function BurgerMenu({ links }: BurgerMenuProps) {
   return (
     <div className="block md:hidden relative mt-2.5">
       <button
-        className="p-2 border border-gray-300 rounded-md hover:bg-gray-100 md:hidden"
+        className="rounded-md hover:bg-gray-100 md:hidden"
         onClick={toggleMenu}
       >
-        <Menu />
+        <img src="/NavButton.svg" alt="" className="size-7" />
       </button>
 
       {isOpen && (
         <div className="absolute top-12 bg-white border rounded-md shadow-md md:hidden z-50">
           <ul>
             {links.map((link) => (
-              <li key={link.label}>
+              <li key={link.label} onClick={toggleMenu}>
                 <Link
                   to={link.href}
                   className="block px-4 py-2 hover:bg-gray-100"
