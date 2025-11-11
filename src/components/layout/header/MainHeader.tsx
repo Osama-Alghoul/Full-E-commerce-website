@@ -1,4 +1,4 @@
-import { Heart, Search, User2Icon, ShoppingCart } from "lucide-react";
+import { Heart, User2Icon, ShoppingCart } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { NavLinks } from "../../../content";
 import SlideInDrawer from "../../ui/SlideDrawer";
@@ -6,6 +6,7 @@ import { useCartContext } from "../../../utils/CartContext";
 import { useFavContext } from "../../../utils/FavContext";
 import { useAuthContext } from "../../../utils/AuthContext";
 import UserMenu from "./userMenu";
+import SearchBar from "./SearchBar";
 
 interface HeaderProps {
   type?: "guest" | "user";
@@ -65,14 +66,7 @@ export default function Header({ type = "guest" }: HeaderProps) {
       </nav>
 
       <div className="flex items-center gap-1">
-        <div className="text-xs w-56 bg-secondary px-3 py-1.5 rounded-sm flex">
-          <input
-            type="search"
-            placeholder={`What are you looking for?`}
-            className="flex-1 outline-none bg-transparent"
-          />
-          <Search />
-        </div>
+        <SearchBar />
         <div className="hover:bg-primary hover:text-white rounded-full p-2.5 relative">
           <Link to="/wishlist">
             <Heart />
