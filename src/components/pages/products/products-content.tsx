@@ -87,6 +87,7 @@ export default function ProductsContent() {
         setTotalProducts(0);
       } finally {
         setLoading(false);
+        window.scroll(0, 250);
       }
     };
 

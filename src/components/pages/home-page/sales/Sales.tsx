@@ -5,6 +5,7 @@ import ProductCard from "../products/ProductCard";
 import ScrollContainer from "../../../ui/SmoothScrollContainer";
 import ProductCardLoading from "../../../ui/productLoading";
 import { useProducts } from "../../../../hooks/useProducts";
+import { Link } from "react-router";
 
 export default function Sales() {
   const { loading, products } = useProducts({ limit: 4, skip: 30 });
@@ -13,7 +14,7 @@ export default function Sales() {
       <div className="flex justify-between items-end flex-wrap">
         <div className="rounded-lg mt-12 flex md:gap-20 gap-10 items-end flex-wrap">
           <SectionTitle title="Today's" bigTitle="Flash Sales" />
-          <Timer targetDate="2025-12-25T00:00:00" theme="dark" />
+          <Timer targetDate="2026-04-25T00:00:00" theme="dark" />
         </div>
       </div>
       <ScrollContainer>
@@ -30,7 +31,9 @@ export default function Sales() {
           })
         )}
       </ScrollContainer>
-      <Button className="my-[60px] self-center">View All Products</Button>
+      <Link to={"/products"} className="my-[60px] self-center">
+        <Button >View All Products</Button>
+      </Link>
     </section>
   );
 }

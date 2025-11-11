@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Button from "../../../ui/Button";
 import Timer from "../../../ui/Timer";
 
@@ -10,8 +11,12 @@ export default function BestSellingItem() {
           <div className="text-white font-semibold text-5xl">
             Enhance Your Music Experience
           </div>
-          <div><Timer targetDate="2025-10-31T23:59:59Z" /></div>
-          <Button variant="green">Buy now</Button>
+          <div>
+            <Timer targetDate="2026-05-31T23:59:59Z" />
+          </div>
+          <Link to="/products/99">
+            <Button variant="green">Buy now</Button>
+          </Link>
         </div>
       </div>
       <div className="lg:bg-[url('/ellipse.svg')] bg-contain bg-center md:pr-11 md:py-10 flex items-center justify-center pb-2.5 lg:pb:0">

@@ -13,6 +13,7 @@ export default function Cart() {
       <Breadcrumbs
         items={[
           { label: "Home", path: "/" },
+          { label: "My Account", path: "/account"},
           { label: "Cart", path: "/cart" },
         ]}
       />
