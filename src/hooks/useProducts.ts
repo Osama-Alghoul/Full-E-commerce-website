@@ -15,6 +15,7 @@ export function useProducts({ limit, skip }: { limit: number; skip: number; }) {
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
+            cache: "force-cache",
           }
         );
 
