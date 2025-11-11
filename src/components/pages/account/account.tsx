@@ -18,9 +18,9 @@ export default function Account() {
           Welcome <span className="text-primary">{userData.username}</span>
         </h2>
       </div>
-      <section className="w-full flex lg:justify-center justify-start gap-24 flex-wrap">
-          <Aside />
-          <Form />
+      <section className="w-full flex lg:justify-center justify-start gap-24 flex-wrap pb-20">
+        <Aside />
+        <Form />
       </section>
     </>
   );

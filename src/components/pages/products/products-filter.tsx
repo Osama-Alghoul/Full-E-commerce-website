@@ -41,7 +41,7 @@ export default function ProductFilters({
           <button
             onClick={() => onCategoryChange("")}
             className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-              selectedCategory === "" ? "bg-primary text-primary-foreground" : "hover:bg-accent text-foreground"
+              selectedCategory === "" ? "bg-primary text-white" : "hover:bg-accent text-foreground"
             }`}
           >
             All Categories
@@ -51,7 +51,7 @@ export default function ProductFilters({
               key={category}
               onClick={() => onCategoryChange(category)}
               className={`w-full text-left px-3 py-2 rounded-lg transition-colors capitalize ${
-                selectedCategory === category ? "bg-primary text-primary-foreground" : "hover:bg-accent text-foreground"
+                selectedCategory === category ? "bg-primary text-white" : "hover:bg-accent text-foreground"
               }`}
             >
               {category.replace("-", " ")}

@@ -21,7 +21,7 @@ export default function Form() {
       <Toaster position="top-center" reverseOrder={false} />
       <form
         onSubmit={handelClick}
-        className="shadow-md max-w-[870px] px-20 py-10"
+        className="shadow-md max-w-[870px] lg:px-20 md:px-10 px-4 py-10"
       >
         <div className="text-primary font-medium">Edit Your Profile</div>
         <div className="flex gap-12 flex-wrap pb-5">
