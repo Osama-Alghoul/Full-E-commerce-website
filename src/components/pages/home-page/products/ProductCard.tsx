@@ -70,7 +70,7 @@ export default function ProductCard({
 
         <img
           src={thumbnail}
-          className="absolute inset-0 w-3/5 h-9/12 m-auto object-contain -z-0"
+          className="absolute inset-0 w-9/12 h-9/12 m-auto object-contain -z-0"
         />
         {quantity === 0 ? (
           <button

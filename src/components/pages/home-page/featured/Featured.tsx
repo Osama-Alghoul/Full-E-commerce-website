@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import SectionTitle from "../../../ui/SectionTitle";
 
 export default function Featured() {
@@ -24,12 +25,12 @@ export default function Featured() {
                   <p className="mb-4 max-w-md text-sm text-gray-300 md:text-base">
                     Black and White version of the PS5 coming out on sale.
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    to="/products?category=laptops"
                     className="inline-block border-b-2 border-white pb-1 text-sm font-semibold text-white transition-colors hover:border-gray-300 hover:text-gray-300 md:text-base"
                   >
                     Shop Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -51,12 +52,12 @@ export default function Featured() {
                   <p className="mb-3 max-w-xs text-sm text-gray-300">
                     Featured woman collections that give you another vibe.
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    to="/products/179"
                     className="inline-block border-b-2 border-white pb-1 text-sm font-semibold text-white transition-colors hover:border-gray-300 hover:text-gray-300"
                   >
                     Shop Now
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -80,12 +81,12 @@ export default function Featured() {
                     <p className="mb-3 text-sm text-gray-300">
                       Amazon wireless speakers
                     </p>
-                    <a
-                      href="#"
+                    <Link
+                      to="/products/99"
                       className="inline-block border-b-2 border-white pb-1 text-sm font-semibold text-white transition-colors hover:border-gray-300 hover:text-gray-300"
                     >
                       Shop Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -107,12 +108,12 @@ export default function Featured() {
                     <p className="mb-3 text-sm text-gray-300">
                       GUCCI INTENSE OUD EDP
                     </p>
-                    <a
-                      href="#"
+                    <Link
+                      to="/products/7"
                       className="inline-block border-b-2 border-white pb-1 text-sm font-semibold text-white transition-colors hover:border-gray-300 hover:text-gray-300"
                     >
                       Shop Now
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

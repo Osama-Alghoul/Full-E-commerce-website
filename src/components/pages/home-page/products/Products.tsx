@@ -3,6 +3,7 @@ import ProductCardLoading from "../../../ui/productLoading";
 import ProductCard from "./ProductCard";
 import Button from "../../../ui/Button";
 import { useProducts } from "../../../../hooks/useProducts";
+import { Link } from "react-router";
 
 export default function Products() {
   const { loading, products } = useProducts({ limit: 8, skip: 0 });
@@ -27,7 +28,9 @@ export default function Products() {
           )}
         </div>
       </div>
-      <Button>View All Products</Button>
+      <Link to={"/products"}>
+        <Button>View All Products</Button>
+      </Link>
     </section>
   );
 }
