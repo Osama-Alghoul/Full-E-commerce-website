@@ -68,7 +68,7 @@ export default function Header({ type = "guest" }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 flex justify-between md:pt-10 pt-4 pb-4 border-b border-gray-300 px-6 lg:px-32 flex-wrap bg-white/80 backdrop-blur-md">
-      <div className="flex gap-4">
+      <div className="flex gap-4 items-center">
         <BurgerMenu links={links} />
 
         <Link to={"/"}>
