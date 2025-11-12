@@ -33,7 +33,14 @@ export default function Item({ itemId }: { itemId: number }) {
     fetchData();
   }, [itemId]);
 
-  if (loading) return <div className="animate-pulse">Loading...</div>;
+  if (loading) return <div 
+      className="
+        text-lg font-semibold text-gray-200 bg-gray-200 ray-500 p-4 
+        border border-gray-200 rounded-md
+        animate-pulse
+      "
+    >
+    </div>;
 
   return (
     <div className="flex justify-between items-center md:text-base text-sm">

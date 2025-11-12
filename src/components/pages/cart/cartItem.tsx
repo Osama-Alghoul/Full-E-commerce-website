@@ -42,7 +42,11 @@ export default function CartItem({ itemId, quantity }: props) {
   if (loading) {
     return (
       <tr>
-        <td className="animate-pulse py-2.5">Loading...</td>
+        <td className="
+        text-lg font-semibold text-gray-200 bg-gray-200 ray-500 p-4 
+        border border-gray-200 rounded-md
+        animate-pulse
+      "></td>
       </tr>
     );
   }
