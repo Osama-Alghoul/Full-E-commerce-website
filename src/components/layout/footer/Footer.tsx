@@ -95,7 +95,15 @@ export default function Footer() {
       </div>
       <div className="py-6 border-t border-t-gray-600">
         <div className="text-center text-gray-600">
-          Copyright Rimel 2022. All right reserved
+          Developed with ❤️ by {" "}
+          <a
+            href="https://github.com/Osama-Alghoul/Full-E-commerce-website"
+            target="_blank"
+            className="text-primary"
+          >
+            Osama
+          </a>
+          {" "}2025 All right reserved
         </div>
       </div>
     </footer>
