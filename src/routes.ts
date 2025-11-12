@@ -11,8 +11,9 @@ import Contact from "./components/pages/contact/contact";
 import NotFound from "./components/pages/not-found/not-found";
 import WishList from "./components/pages/whislist/whishlist";
 import Account from "./components/pages/account/account";
-import PaymentStatus from "./components/pages/paymentStatus/paymentStatus";
 import ProductsPage from "./components/pages/products/products-content";
+import Success from "./components/pages/paymentStatus/success";
+import Cancel from "./components/pages/paymentStatus/cancel";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +38,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-
-      { path: "status", Component: PaymentStatus },
       {
         path: "products",
         children: [
@@ -51,6 +50,8 @@ const router = createBrowserRouter([
       { path: "wishlist", Component: WishList },
       { path: "account", Component: Account },
       { path: "*", Component: NotFound },
+      { path: "success", Component: Success },
+      { path: "cancel", Component: Cancel },
     ],
   },
 ]);

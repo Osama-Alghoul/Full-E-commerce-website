@@ -6,12 +6,13 @@ import CartBill from "./cartBill";
 import { useCartContext } from "../../../utils/CartContext";
 import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
+import CheckoutButton from "../../ui/CheckoutButton";
 
 export default function Cart() {
   const { cartItems } = useCartContext();
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  },[]);
   return (
     <>
       <Breadcrumbs
@@ -47,9 +48,7 @@ export default function Cart() {
                 <div className="border rounded-sm px-6 py-8 w-[470px]">
                   <div className="font-medium text-xl">Cart Total</div>
                   <CartBill />
-                  <Link to={"/cart/checkout"} className="m-auto">
-                    <Button>Procees to checkout</Button>
-                  </Link>
+                  <CheckoutButton cart={cartItems} />
                 </div>
               </div>
             </>
