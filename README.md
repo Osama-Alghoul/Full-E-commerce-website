@@ -1,73 +1,83 @@
-# React + TypeScript + Vite
+# Full E-commerce React Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
+This is a fully interactive **E-commerce website** developed as a **Front-end project** by Osama Alghoul.  
+It features product browsing, categories, and a shopping cart with a Stripe payment integration.
 
-Currently, two official plugins are available:
+**Note:** Only three products are currently available for purchase to save time during testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Technologies Used
+- **Front-end:** React, Vite, TypeScript, Tailwind CSS  
+- **Payment:** Stripe (Checkout Session)  
+- **Deployment:** Vercel  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Available Products
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| ID  | Product Name             | Link              |
+|-----|--------------------------|-----------------|
+| 123 | iPhone 13 Pro            | `/products/123`  |
+| 100 | Apple Airpods            | `/products/100`  |
+| 104 | Apple iPhone Charger     | `/products/104`  |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+These products are added to the **Hero Section Carousel**, and can be added to the shopping cart for checkout.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Stripe Payment Instructions
+
+1. Add products to the shopping cart with the desired quantity.  
+2. Click the **Checkout** button in the cart page.  
+3. You will be redirected to a **Stripe Checkout Page** to complete the payment.  
+4. After successful payment, you will be redirected to the **Success** page.  
+5. If the payment is canceled, you will be redirected to the **Cancel** page.  
+
+> **Important for developers:**  
+> Each cart item should contain `id` and `quantity` when sending the request to the `/api/create-checkout-session` endpoint.
+
+---
+
+## Environment Variables
+
+To run the project correctly, you need to set the following variables:
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
+
+
+**In Vercel Dashboard (for deployment):**
+- Add the same variables under **Project Settings → Environment Variables**  
+- Make sure to redeploy after setting them
+
+---
+
+## Running the Project Locally
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Osama-Alghoul/Full-E-commerce-website
+```
+**In `.env.local` (for local development):**
+Install dependencies:
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Run the development server:
+```bash
+npm run dev
 ```
+
+Open the browser at http://localhost:5173 (or the URL shown in terminal) to see the project.
+
+Use the cart to add products and test Stripe checkout locally using vercel dev or after deploying the API.
+
+Notes
+
+This project is Front-end only, with Stripe Checkout handled on the backend via a Vercel API route.
+
+The three products added are for demonstration purposes only.
+
+Ensure the Stripe Secret Key is configured properly in local and production environments.
