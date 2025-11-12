@@ -7,6 +7,7 @@ import { useCartContext } from "../../../utils/CartContext";
 import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
 import CheckoutButton from "../../ui/CheckoutButton";
+import Tip from "./tip";
 
 export default function Cart() {
   const { cartItems } = useCartContext();
@@ -48,6 +49,7 @@ export default function Cart() {
                 <div className="border rounded-sm px-6 py-8 w-[470px]">
                   <div className="font-medium text-xl">Cart Total</div>
                   <CartBill />
+                  <Tip />
                   <CheckoutButton cart={cartItems} />
                 </div>
               </div>
