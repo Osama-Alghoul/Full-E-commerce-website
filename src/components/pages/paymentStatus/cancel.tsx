@@ -1,20 +1,12 @@
 import Breadcrumbs from "../../ui/BreadCrumb";
 import { X } from "lucide-react";
 import Button from "../../ui/Button";
-import { Link } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function Cancel() {
-  const [status, setStatus] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setStatus(true);
-    }, 2000);
   }, []);
 
   return (
@@ -28,17 +20,15 @@ export default function Cancel() {
         ]}
       />
       <section
-        className={`flex ${
-          status ? "flex-col" : ""
-        } justify-center w-full gap-5 items-center pb-48`}
+        className={`flex justify-center w-full gap-5 items-center pb-48`}
       >
         <div className="flex gap-5">
           <X className="size-10 text-red-400" />
           <h1 className="lg:text-5xl md:text-4xl text-3xl">Payment Canceled</h1>
         </div>
-        <Link to="/" className="pt-12">
+        <a href="/" className="pt-12">
           <Button>Back to Home</Button>
-        </Link>
+        </a>
       </section>
     </>
   );
