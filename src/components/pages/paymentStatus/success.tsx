@@ -3,13 +3,16 @@ import { CheckCircleIcon } from "lucide-react";
 import Button from "../../ui/Button";
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
+import { useCartContext } from "../../../utils/CartContext";
 
 export default function Success() {
   const [status, setStatus] = useState(false);
+  const { cleanCart } = useCartContext();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    cleanCart();
+  }, [cleanCart]);
 
   useEffect(() => {
     setTimeout(() => {

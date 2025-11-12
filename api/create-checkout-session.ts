@@ -7,9 +7,9 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY  as string, {
 
 // Map your local dummy JSON product IDs → Stripe Price IDs
 const STRIPE_PRODUCTS: Record<number, string> = {
-  1: "price_1SSH3gCav5FPvgHGUvJ3UOi1", // Replace with your real Stripe price IDs
-  2: "price_1SSH2cCav5FPvgHGx9y6Oghd",
-  3: "price_1SSH1WCav5FPvgHGdtPdxYgq",
+  104: "price_1SSH3gCav5FPvgHGUvJ3UOi1", // Replace with your real Stripe price IDs
+  100: "price_1SSH2cCav5FPvgHGx9y6Oghd",
+  123: "price_1SSH1WCav5FPvgHGdtPdxYgq",
 };
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
