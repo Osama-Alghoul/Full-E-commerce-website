@@ -43,7 +43,7 @@ export default function CheckoutButton({ cart }: CheckoutButtonProps) {
       <button
         onClick={handleCheckout}
         disabled={loading || cart.length === 0}
-        className={`py-4 rounded-sm cursor-pointer${
+        className={`py-4 rounded-sm px-10 md:px-12 bg-primary text-white cursor-pointer${
           loading
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-primary text-white"
