@@ -2,8 +2,12 @@ import Breadcrumbs from "../../ui/BreadCrumb";
 import Badges from "./badges";
 import Trusted from "../home-page/trust-badges/Trusted";
 import Employees from "./employees";
+import { useEffect } from "react";
 
 export default function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Breadcrumbs
@@ -15,7 +19,9 @@ export default function About() {
       <section>
         <div className="flex gap-20 px-4 md:pl-[135px] md:px-0 md:pb-36 pb-16 flex-wrap lg:flex-nowrap">
           <div className="max-w-[525px]">
-            <h1 className="md:text-[54px] text-4xl font-semibold pb-4">Our Story</h1>
+            <h1 className="md:text-[54px] text-4xl font-semibold pb-4">
+              Our Story
+            </h1>
             <p>
               Launced in 2015, Exclusive is South Asia's premier online shopping
               makterplace with an active presense in Bangladesh. Supported by

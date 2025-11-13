@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import Breadcrumbs from "../../ui/BreadCrumb";
 import Form from "./Form";
 import Info from "./Info";
 
 export default function Contact() {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <>
       <Breadcrumbs

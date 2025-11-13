@@ -3,14 +3,17 @@ import Button from "../../ui/Button";
 import SginUpForm from "./sginUpForm";
 import HomePage from "../../HomePage";
 import { useAuthContext } from "../../../utils/AuthContext";
+import { useEffect } from "react";
 
 export default function SignUp() {
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { isLoggedIn } = useAuthContext();
-  
-    if (isLoggedIn) {
-      return <HomePage />;
-    }
+
+  if (isLoggedIn) {
+    return <HomePage />;
+  }
 
   return (
     <section className="flex justify-between mt-14 mb-36 flex-wrap">
