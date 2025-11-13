@@ -8,18 +8,20 @@ import { ShoppingCart } from "lucide-react";
 import { useEffect } from "react";
 import CheckoutButton from "../../ui/CheckoutButton";
 import Tip from "./tip";
+import { useAuthContext } from "../../../utils/AuthContext";
 
 export default function Cart() {
   const { cartItems } = useCartContext();
+  const { isLoggedIn } = useAuthContext();
   useEffect(() => {
     window.scrollTo(0, 0);
-  },[]);
+  }, []);
   return (
     <>
       <Breadcrumbs
         items={[
           { label: "Home", path: "/" },
-          { label: "My Account", path: "/account"},
+          { label: "My Account", path: "/account" },
           { label: "Cart", path: "/cart" },
         ]}
       />
@@ -47,7 +49,13 @@ export default function Cart() {
                   <div className="font-medium text-xl">Cart Total</div>
                   <CartBill />
                   <Tip />
-                  <CheckoutButton cart={cartItems} />
+                  {isLoggedIn ? (
+                    <CheckoutButton cart={cartItems} />
+                  ) : (
+                    <Link to="/auth/login">
+                      <Button variant="outline">Login to checkout</Button>
+                    </Link>
+                  )}
                 </div>
               </div>
             </>
