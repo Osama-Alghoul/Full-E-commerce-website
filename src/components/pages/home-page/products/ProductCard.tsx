@@ -76,9 +76,7 @@ export default function ProductCard({
         {quantity === 0 ? (
           <button
             onClick={() => increaseCartQuantity(id)}
-            className="text-white bg-black text-center py-2 w-full transition-colors duration-300 ease-in-out 
-                         opacity-0 group-hover:opacity-100 group-hover:block md:opacity-100 md:block md:bg-black 
-                         border-none cursor-pointer"
+            className="text-white bg-black text-center py-2 group-hover:block md:hidden border-none cursor-pointer transition-colors duration-300 ease-in-out"
           >
             Add to Cart
           </button>

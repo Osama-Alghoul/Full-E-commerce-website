@@ -41,9 +41,6 @@ export default function Cart() {
                 <Link to={"/"}>
                   <Button variant="outline">Return To Shop</Button>
                 </Link>
-                <Link to={"/cart/#"}>
-                  <Button variant="outline">Upgrade Cart</Button>
-                </Link>
               </div>
               <div className="flex justify-end pt-20">
                 <div className="border rounded-sm px-6 py-8 w-[470px]">
