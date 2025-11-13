@@ -2,8 +2,12 @@ import { Link } from "react-router";
 import { useAuthContext } from "../../../utils/AuthContext";
 import HomePage from "../../HomePage";
 import LoginForm from "./LoginForm";
+import { useEffect } from "react";
 
 export default function Login() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { isLoggedIn } = useAuthContext();
 
   if (isLoggedIn) {
